@@ -1,0 +1,94 @@
+{
+    "Login": "Connexion",
+    "Sign In": "Se connecter",
+    "Sign Up": "S'inscrire",
+    "Forget my password?": "Mot de passe oublié ?",
+    "Login Id": "Identifiant",
+    "Password": "Mot de passe",
+    "UserRegistration": "Inscription Utilisateur",
+    "FirstName": "Prénom",
+    "LastName": "Nom",
+    "LoginId": "Identifiant",
+    "DateOfBirth": "Date de Naissance",
+    "Gender": "Sexe",
+    "Mobile": "Mobile",
+    "Buttons": {
+        "SignUp": "S'inscrire",
+        "Reset": "Réinitialiser"
+    },
+    "GenderOptions": {
+        "Select": "------------Sélectionner------------",
+        "Male": "Homme",
+        "Female": "Femme"
+    },
+    "Greetings": {
+        "HiUser": "Bonjour, {{name}} ( {{role}} )",
+        "HiGuest": "Bonjour, Invité"
+    },
+    "Links": {
+        "MyProfile": "Mon Profil",
+        "ChangePassword": "Changer le Mot de Passe",
+        "AddUser": "Ajouter un Utilisateur",
+        "UserList": "Liste des Utilisateurs",
+        "AddRole": "Ajouter un Rôle",
+        "RoleList": "Liste des Rôles",
+        "AddCollege": "Ajouter un Collège",
+        "CollegeList": "Liste des Collèges",
+        "AddStudent": "Ajouter un Étudiant",
+        "StudentList": "Liste des Étudiants",
+        "AddMarksheet": "Ajouter un Relevé de Notes",
+        "MarksheetList": "Liste des Relevés de Notes",
+        "AddCourse": "Ajouter un Cours",
+        "CourseList": "Liste des Cours",
+        "AddSubject": "Ajouter une Matière",
+        "SubjectList": "Liste des Matières",
+        "AddTimetable": "Ajouter un Emploi du Temps",
+        "TimetableList": "Liste des Emplois du Temps",
+        "AddFaculty": "Ajouter une Faculté",
+        "FacultyList": "Liste des Facultés",
+        "Logout": "Déconnexion",
+        "Dashboard": "Tableau de Bord",
+        "Login": "Connexion"
+    },
+    "LocaleSelect": {
+        "Select": "-------Sélectionner-------",
+        "English": "Anglais",
+        "Hindi": "Hindi",
+        "Urdu": "Ourdou",
+        "French": "Français"
+    },
+    "UserForm": {
+        "AddUser": "Ajouter un Utilisateur",
+        "UpdateUser": "Mettre à Jour l'Utilisateur",
+        "FirstName": "Prénom",
+        "LastName": "Nom",
+        "LoginId": "Identifiant",
+        "Password": "Mot de Passe",
+        "DateOfBirth": "Date de Naissance",
+        "Gender": "Sexe",
+        "Role": "Rôle",
+        "Mobile": "Mobile",
+        "AlternateMobile": "Mobile Alternatif",
+        "Status": "Statut",
+        "Placeholders": {
+            "FirstName": "Entrez le prénom",
+            "LastName": "Entrez le nom",
+            "LoginId": "Entrez l'identifiant",
+            "Password": "Entrez le mot de passe",
+            "DateOfBirth": "Sélectionnez la date de naissance",
+            "Mobile": "Entrez le numéro de mobile",
+            "AlternateMobile": "Entrez le numéro de mobile alternatif"
+        },
+        "SelectOptions": {
+            "Select": "------------Sélectionner------------",
+            "Male": "Homme",
+            "Female": "Femme",
+            "Active": "Actif",
+            "Inactive": "Inactif"
+        },
+        "Buttons": {
+            "Save": "Enregistrer",
+            "List": "Liste"
+        }
+    }
+}

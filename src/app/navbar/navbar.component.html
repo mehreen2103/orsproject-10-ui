@@ -1,0 +1,343 @@
+<style type="text/css">
+  /* Navbar visual theme: gradient background, shaded dropdowns */
+  .navbar-custom {
+    background: linear-gradient(90deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(12, 22, 31, 0.5);
+  }
+
+  .navbar-custom .navbar-brand b {
+    color: #ffffff;
+  }
+
+  .navbar-custom .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .navbar-custom .nav-link:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+  }
+
+  .navbar-custom .navbar-text {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Dropdown shading */
+  .navbar-custom .dropdown-menu {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.18));
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .navbar-custom .dropdown-item {
+    color: #f8f9fa;
+  }
+
+  .navbar-custom .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+  }
+
+  /* Small utility tweak for the locale select */
+  .form-control.w-auto {
+    display: inline-block;
+    width: auto;
+  }
+
+  /* Circular logo */
+  .navbar-custom .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 576px) {
+    .navbar-custom .navbar-brand b {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Nested Dropdown */
+
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+  }
+
+  .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-submenu>.dropdown-toggle::after {
+    float: right;
+    margin-top: 8px;
+    content: "▶";
+    border: none;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom border-bottom m-0 fixed-top "
+  style="border-bottom: 1px solid rgba(0,0,0,0.25);">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand" [routerLink]="['/dashboard']">
+      <b>Dashboard</b>
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="toggleCollapsed()" aria-controls="mainNavbar"
+      [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar" [class.show]="!isCollapsed">
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="!isLogin()" [routerLink]="['/login']">{{ 'Links.Login' | translate }}</a>
+          <a class="nav-link text-primary" *ngIf="isLogin()" (click)="logout()">{{ 'Links.Logout' | translate }}</a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLogin()">
+          <a class="nav-link" (click)="forward()">{{ 'Links.MyProfile' | translate }}</a>
+        </li>
+
+        <!-- User dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.user' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/changepassword']">{{ 'Links.ChangePassword' |
+                translate }}</a>
+            </li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/user']">{{ 'Links.AddUser' | translate }}</a></li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/userlist']">{{ 'Links.UserList' | translate }}</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Role dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.role' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/role']">{{ 'Links.AddRole' | translate }}</a></li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/rolelist']">{{ 'Links.RoleList' | translate }}</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- College dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.college' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/college']">{{ 'Links.AddCollege' | translate }}</a>
+            </li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/collegelist']">{{ 'Links.CollegeList' | translate
+                }}</a></li>
+          </ul>
+        </li>
+
+        <!-- Student dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.student' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/student']">{{ 'Links.AddStudent' | translate }}</a>
+            </li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/studentlist']">{{ 'Links.StudentList' | translate
+                }}</a></li>
+          </ul>
+        </li>
+        <!-- Marksheet dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.marksheet' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/marksheet']">{{ 'Links.AddMarksheet' | translate
+                }}</a></li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/marksheetlist']">{{ 'Links.MarksheetList' |
+                translate }}</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Course dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.course' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/course']">{{ 'Links.AddCourse' | translate }}</a>
+            </li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/courselist']">{{ 'Links.CourseList' | translate
+                }}</a></li>
+          </ul>
+        </li>
+
+        <!-- Subject dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.subject' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/subject']">{{ 'Links.AddSubject' | translate }}</a>
+            </li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/subjectlist']">{{ 'Links.SubjectList' | translate
+                }}</a></li>
+          </ul>
+        </li>
+
+        <!-- Timetable dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.timetable' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/timetable']">{{ 'Links.AddTimetable' | translate
+                }}</a></li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/timetablelist']">{{ 'Links.TimetableList' |
+                translate }}</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Faculty dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{ 'Links.faculty' | translate }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-dark" [routerLink]="['/faculty']">{{ 'Links.AddFaculty' | translate }}</a>
+            </li>
+            <li><a class="dropdown-item text-dark" [routerLink]="['/facultylist']">{{ 'Links.FacultyList' | translate
+                }}</a></li>
+          </ul>
+        </li>
+        <!-- Use Case Dropdown -->
+        <li class="nav-item dropdown" *ngIf="isLogin()">
+
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"> Use Case </a>
+
+          <ul class="dropdown-menu">
+
+            <!-- Weather -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#"> Weather </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-dark" [routerLink]="['/weather']"> Add Weather</a> </li>
+
+                <li><a class="dropdown-item text-dark" [routerLink]="['/weatherlist']"> Weather List </a></li>
+
+              </ul>
+            </li>
+
+            <!-- Drone -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#">Drone</a>
+              <ul class="dropdown-menu">
+                <li> <a class="dropdown-item text-dark" [routerLink]="['/drone']">Add Drone</a></li>
+
+                <li><a class="dropdown-item text-dark" [routerLink]="['/dronelist']"> Drone List</a></li>
+              </ul>
+            </li>
+            <!-- Branch -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#"> Branch </a>
+              <ul class="dropdown-menu">
+                <li> <a class="dropdown-item text-dark" [routerLink]="['/branch']"> Add Branch</a> </li>
+
+                <li><a class="dropdown-item text-dark" [routerLink]="['/branchlist']"> Branch List</a> </li>
+              </ul>
+
+            </li>
+            <!-- Department -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#"> Department </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/department']"> Add Department </a>
+                </li>
+
+                <li><a class="dropdown-item text-dark" [routerLink]="['/departmentlist']"> Department List </a>
+                </li>
+              </ul>
+            </li>
+            <!-- Fee -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#">Fee</a>
+              <ul class="dropdown-menu">
+                <li> <a class="dropdown-item text-dark" [routerLink]="['/fee']">Add Fee </a> </li>
+                <li> <a class="dropdown-item text-dark" [routerLink]="['/feelist']"> Fee List</a></li>
+              </ul>
+            </li>
+            <!-- More -->
+            <li class="dropdown-submenu">
+
+              <a class="dropdown-item dropdown-toggle text-dark" href="#">
+                {{ 'Links.More' | translate }}
+              </a>
+
+              <ul class="dropdown-menu">
+
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/meritlist']">
+                    {{ 'Links.meritlist' | translate }}
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item text-dark" (click)="openJavadoc()">
+                    {{ 'Links.Javadoc' | translate }}
+                  </a>
+                </li>
+
+              </ul>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+      </ul>
+
+      <!-- Locale select, greeting kept on right side -->
+      <span class="navbar-text mr-3" *ngIf="isLogin()">
+        <b>{{ 'Greetings.HiUser' | translate:{name: form.data.fname, role: form.data.role} }}</b>
+      </span>
+      <span class="navbar-text mr-3 text-light" *ngIf="!isLogin()">
+        {{ 'Greetings.HiGuest' | translate }}
+      </span>
+
+      <select #locale class="form-control form-control-sm w-auto" (change)="changeLocale(locale.value)">
+        <option value="0">{{ 'LocaleSelect.Select' | translate }}</option>
+        <option value="en">{{ 'LocaleSelect.English' | translate }}</option>
+        <option value="hi">{{ 'LocaleSelect.Hindi' | translate }}</option>
+      </select>
+    </div>
+  </div>
+</nav>

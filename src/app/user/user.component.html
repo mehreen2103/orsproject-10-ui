@@ -1,0 +1,598 @@
+<style>
+  .user-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef4ff, #f7f3ff, #eefcf6);
+    padding: 40px 0;
+  }
+
+  .user-card {
+    border: none;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .18);
+    transition: .35s;
+  }
+
+  .user-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .22);
+  }
+
+  .user-title {
+    font-weight: bold;
+    color: #16325c;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, .12);
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #1f3b73;
+  }
+
+  .input-group-text {
+    background: linear-gradient(135deg, #0d6efd, #6f42c1);
+    color: #fff;
+    border: none;
+  }
+
+  .form-control,
+  .form-select {
+    border-left: none;
+    transition: .3s;
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 10px rgba(111, 66, 193, .35);
+  }
+
+  .img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+  }
+  .btn-success{
+    background:linear-gradient(135deg,#28a745,#20c997);
+    border:none;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(40,167,69,.35);
+    transition:.35s;
+}
+
+.btn-success:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(40,167,69,.45);
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#0d6efd,#6f42c1);
+    border:none;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(13,110,253,.35);
+    transition:.35s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(13,110,253,.45);
+}
+
+.input-group{
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    border-radius:10px;
+}
+
+.form-control,
+.form-select{
+    border-radius:0 10px 10px 0;
+}
+
+.input-group-text{
+    border-radius:10px 0 0 10px;
+}
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="user-bg">
+
+  <div class="container py-5">
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-10">
+
+        <div class="card user-card">
+
+          <div class="card-body p-5">
+
+            <h2 *ngIf="!form.data.id" class="text-center user-title mb-4">
+              {{ 'UserForm.AddUser' | translate }}
+            </h2>
+
+            <h2 *ngIf="form.data.id>0" class="text-center user-title mb-4">
+              {{ 'UserForm.UpdateUser' | translate }}
+            </h2>
+
+            <div *ngIf="!form.error && form.message" class="alert alert-success alert-dismissible fade show">
+
+              {{form.message}}
+
+              <button type="button" class="btn-close" data-bs-dismiss="alert">
+              </button>
+
+            </div>
+
+            <div *ngIf="form.error && form.message" class="alert alert-danger alert-dismissible fade show">
+
+              {{form.message}}
+
+              <button type="button" class="btn-close" data-bs-dismiss="alert">
+              </button>
+
+            </div>
+
+            <form (ngSubmit)="submit()">
+
+              <div class="text-center mb-4">
+
+                <img *ngIf="form.data.imageId" src="http://localhost:8080/User/profilePic/{{form.data.id}}" class="img">
+
+              </div>
+
+              <!-- First Name & Last Name -->
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.FirstName'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-user"></i>
+
+                    </span>
+
+                    <input type="text" class="form-control" name="firstName" [(ngModel)]="form.data.firstName"
+                      placeholder="{{'UserForm.Placeholders.FirstName'|translate}}">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.firstName}}
+
+                  </small>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.LastName'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-user-circle"></i>
+
+                    </span>
+
+                    <input type="text" class="form-control" name="lastName" [(ngModel)]="form.data.lastName"
+                      placeholder="{{'UserForm.Placeholders.LastName'|translate}}">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.lastName}}
+
+                  </small>
+
+                </div>
+
+              </div>
+
+              <!-- Login ID & Password -->
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.LoginId'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-envelope"></i>
+
+                    </span>
+
+                    <input type="text" class="form-control" name="loginId" [(ngModel)]="form.data.loginId"
+                      placeholder="{{'UserForm.Placeholders.LoginId'|translate}}">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.loginId}}
+
+                  </small>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.Password'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-key"></i>
+
+                    </span>
+
+                    <input type="password" class="form-control" name="password" [(ngModel)]="form.data.password"
+                      placeholder="{{'UserForm.Placeholders.Password'|translate}}">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.password}}
+
+                  </small>
+
+                </div>
+
+              </div>
+              <!-- Date of Birth & Gender -->
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.DateOfBirth'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-calendar"></i>
+
+                    </span>
+
+                    <input type="date" class="form-control" name="dob" [ngModel]="form.data.dob | date:'yyyy-MM-dd'"
+                      (ngModelChange)="form.data.dob=$event">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.dob}}
+
+                  </small>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.Gender'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-venus-mars"></i>
+
+                    </span>
+
+                    <select class="form-select" name="gender" [(ngModel)]="form.data.gender">
+
+                      <option value="undefined">
+
+                        {{'UserForm.SelectOptions.Select'|translate}}
+
+                      </option>
+
+                      <option value="Male">
+
+                        {{'UserForm.SelectOptions.Male'|translate}}
+
+                      </option>
+
+                      <option value="Female">
+
+                        {{'UserForm.SelectOptions.Female'|translate}}
+
+                      </option>
+
+                    </select>
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.gender}}
+
+                  </small>
+
+                </div>
+
+              </div>
+
+              <!-- Role & Mobile -->
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.Role'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-id-badge"></i>
+
+                    </span>
+
+                    <select class="form-select" name="roleId" [(ngModel)]="form.data.roleId">
+
+                      <option value="undefined">
+
+                        {{'UserForm.SelectOptions.Select'|translate}}
+
+                      </option>
+
+                      <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">
+
+                        {{obj.value}}
+
+                      </option>
+
+                    </select>
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.roleId}}
+
+                  </small>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.Mobile'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-phone-square"></i>
+
+                    </span>
+
+                    <input type="text" class="form-control" name="phone" maxlength="10" [(ngModel)]="form.data.phone"
+                      placeholder="{{'UserForm.Placeholders.Mobile'|translate}}">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.phone}}
+
+                  </small>
+
+                </div>
+
+              </div>
+
+              <!-- Alternate Mobile & Status -->
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.AlternateMobile'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-phone"></i>
+
+                    </span>
+
+                    <input type="text" class="form-control" name="alternateMobile" maxlength="10"
+                      [(ngModel)]="form.data.alternateMobile"
+                      placeholder="{{'UserForm.Placeholders.AlternateMobile'|translate}}">
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.alternateMobile}}
+
+                  </small>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                  <label class="form-label">
+
+                    {{'UserForm.Status'|translate}}
+
+                    <span class="text-danger">*</span>
+
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+
+                      <i class="fa fa-toggle-on"></i>
+
+                    </span>
+
+                    <select class="form-select" name="status" [(ngModel)]="form.data.status">
+
+                      <option value="undefined">
+
+                        {{'UserForm.SelectOptions.Select'|translate}}
+
+                      </option>
+
+                      <option value="Active">
+
+                        {{'UserForm.SelectOptions.Active'|translate}}
+
+                      </option>
+
+                      <option value="Inactive">
+
+                        {{'UserForm.SelectOptions.Inactive'|translate}}
+
+                      </option>
+
+                    </select>
+
+                  </div>
+
+                  <small class="text-danger">
+
+                    {{form.inputerror.status}}
+
+                  </small>
+
+                </div>
+
+              </div>
+              <!-- Upload Image -->
+
+              <div class="row">
+
+                <div class="col-md-12 mb-4">
+
+                  <label class="form-label">
+                    Upload Image
+                  </label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-text">
+                      <i class="fa fa-image"></i>
+                    </span>
+
+                    <input type="file" class="form-control" (change)="onFileSelect($event)">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Buttons -->
+
+              <div class="text-center mt-4">
+
+                <button type="submit" class="btn btn-success btn-lg px-5 me-3">
+
+                  <i class="fa fa-save me-2"></i>
+
+                  {{'UserForm.Buttons.Save'|translate}}
+
+                </button>
+
+                <button type="button" class="btn btn-primary btn-lg px-5" (click)="forward('/userlist')">
+
+                  <i class="fa fa-list me-2"></i>
+
+                  {{'UserForm.Buttons.List'|translate}}
+
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<app-footer></app-footer>

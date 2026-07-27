@@ -1,0 +1,600 @@
+<style>
+  .hm {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #edf4ff, #f6f2ff, #eefaf5);
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  .list-card {
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .18);
+    padding: 30px;
+    transition: .4s;
+  }
+
+  .list-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, .22);
+  }
+
+  .page-title {
+    font-weight: bold;
+    color: #183153;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, .10);
+  }
+
+  .search-box {
+
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+    padding: 25px;
+
+  }
+
+  .input-group-text {
+
+    background: linear-gradient(135deg, #0d6efd, #6f42c1);
+    color: white;
+    border: none;
+
+  }
+
+  .form-control,
+  .form-select {
+
+    border-left: none;
+
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+
+    box-shadow: 0 0 10px rgba(111, 66, 193, .35);
+
+  }
+
+  .btn-search {
+
+    background: linear-gradient(135deg, #0d6efd, #6f42c1);
+    border: none;
+    color: white;
+    box-shadow: 0 8px 18px rgba(13, 110, 253, .30);
+
+  }
+
+  .btn-reset {
+
+    background: linear-gradient(135deg, #495057, #212529);
+    border: none;
+    color: white;
+    box-shadow: 0 8px 18px rgba(33, 37, 41, .30);
+
+  }
+
+  .img {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
+
+  }
+
+  .table {
+
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+
+  }
+
+  .table thead th {
+
+    border: none;
+    font-size: 15px;
+    padding: 16px;
+    letter-spacing: .5px;
+
+  }
+
+  .table tbody td {
+
+    padding: 14px;
+    vertical-align: middle;
+
+  }
+
+  .table-hover tbody tr {
+
+    transition: .25s;
+
+  }
+
+  .table-hover tbody tr:hover {
+
+    transform: scale(1.01);
+    background: #f8fbff;
+
+  }
+
+  .badge {
+
+    font-size: 13px;
+    border-radius: 30px;
+
+  }
+
+  .btn-outline-primary {
+
+    transition: .3s;
+
+  }
+
+  .btn-outline-primary:hover {
+
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(13, 110, 253, .35);
+
+  }
+
+  .btn-success {
+
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border: none;
+    color: white;
+    box-shadow: 0 8px 18px rgba(40, 167, 69, .35);
+    transition: .35s;
+
+  }
+
+  .btn-success:hover {
+
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(40, 167, 69, .45);
+
+  }
+
+  .btn-danger {
+
+    background: linear-gradient(135deg, #dc3545, #ff6b6b);
+    border: none;
+    color: white;
+    box-shadow: 0 8px 18px rgba(220, 53, 69, .35);
+    transition: .35s;
+
+  }
+
+  .btn-danger:hover {
+
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(220, 53, 69, .45);
+
+  }
+
+  .btn-warning {
+
+    color: white;
+    border: none;
+    background: linear-gradient(135deg, #f39c12, #f1c40f);
+    box-shadow: 0 8px 18px rgba(243, 156, 18, .35);
+    transition: .35s;
+
+  }
+
+  .btn-warning:hover {
+
+    transform: translateY(-3px);
+
+  }
+
+  .btn-search:hover,
+  .btn-reset:hover {
+
+    transform: translateY(-3px);
+
+  }
+
+  .table {
+
+    border-radius: 20px;
+    overflow: hidden;
+
+  }
+
+  .table tbody tr {
+
+    transition: .25s;
+
+  }
+
+  .table tbody tr:hover {
+
+    background: #f5f9ff;
+    transform: scale(1.01);
+
+  }
+
+  .page-title {
+
+    font-weight: 700;
+    letter-spacing: 1px;
+
+  }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="hm">
+
+  <div class="container-fluid">
+
+    <div class="list-card">
+
+      <ng-container *ngIf="form.list.length>0">
+
+        <h1 class="text-center page-title mb-4">
+
+          <i class="fa fa-users me-2"></i>
+
+          User List
+
+        </h1>
+
+        <!-- Success -->
+
+        <div *ngIf="!form.error && form.message" class="alert alert-success alert-dismissible fade show">
+
+          {{form.message}}
+
+          <button type="button" class="btn-close" data-bs-dismiss="alert">
+          </button>
+
+        </div>
+
+        <!-- Error -->
+
+        <div *ngIf="form.error && form.message" class="alert alert-danger alert-dismissible fade show">
+
+          {{form.message}}
+
+          <button type="button" class="btn-close" data-bs-dismiss="alert">
+          </button>
+
+        </div>
+
+        <!-- Search Card -->
+
+        <div class="search-box mb-4">
+
+          <div class="row g-3 align-items-end">
+
+            <div class="col-lg-3">
+
+              <label class="fw-bold">
+
+                First Name
+
+              </label>
+
+              <div class="input-group">
+
+                <span class="input-group-text">
+
+                  <i class="fa fa-user"></i>
+
+                </span>
+
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="form.searchParams.firstName"
+                  placeholder="Enter First Name">
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-3">
+
+              <label class="fw-bold">
+
+                Login Id
+
+              </label>
+
+              <div class="input-group">
+
+                <span class="input-group-text">
+
+                  <i class="fa fa-envelope"></i>
+
+                </span>
+
+                <input type="text" class="form-control" name="loginId" [(ngModel)]="form.searchParams.loginId"
+                  placeholder="Enter Login Id">
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-3">
+
+              <label class="fw-bold">
+
+                Role
+
+              </label>
+
+              <div class="input-group">
+
+                <span class="input-group-text">
+
+                  <i class="fa fa-id-badge"></i>
+
+                </span>
+
+                <select class="form-select" name="roleId" [(ngModel)]="form.searchParams.roleId">
+
+                  <option value="undefined">
+
+                    ------------Select------------
+
+                  </option>
+
+                  <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">
+
+                    {{obj.value}}
+
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-3 text-center">
+
+              <button class="btn btn-search me-2" (click)="search()">
+
+                <i class="fa fa-search"></i>
+
+                Search
+
+              </button>
+
+              <button class="btn btn-reset" (click)="reset()">
+
+                <i class="fa fa-refresh"></i>
+
+                Reset
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Modern Table -->
+
+        <div class="table-responsive">
+
+          <table class="table table-hover align-middle shadow rounded overflow-hidden">
+
+            <thead>
+
+              <tr style="background:linear-gradient(90deg,#0d6efd,#6f42c1);color:white;">
+
+                <th class="text-center">
+
+                  <input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
+
+                </th>
+
+                <th class="text-center">#</th>
+
+                <th class="text-center">Profile</th>
+
+                <th class="text-center">First Name</th>
+
+                <th class="text-center">Last Name</th>
+
+                <th class="text-center">Login Id</th>
+
+                <th class="text-center">DOB</th>
+
+                <th class="text-center">Gender</th>
+
+                <th class="text-center">Role</th>
+
+                <th class="text-center">Mobile</th>
+
+                <th class="text-center">Status</th>
+
+                <th class="text-center">Action</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let m of form.list; let i=index">
+
+                <td class="text-center">
+
+                  <input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id" [value]="isMasterSel">
+
+                </td>
+
+                <td class="text-center fw-bold">
+
+                  {{(form.pageNo*5)+i+1}}
+
+                </td>
+
+                <td class="text-center">
+
+                  <img *ngIf="m.imageId" [src]="'http://localhost:8080/User/profilePic/'+m.id" class="img">
+
+                  <img *ngIf="!m.imageId" src="assets/files/images.png" class="img">
+
+                </td>
+
+                <td class="fw-semibold">
+
+                  {{m.firstName}}
+
+                </td>
+
+                <td>{{m.lastName}} </td>
+
+                <td>
+
+                  {{m.loginId}}
+
+                </td>
+
+                <td>
+
+                  {{m.dob | date:'dd-MM-yyyy'}}
+
+                </td>
+
+                <td>
+
+                  {{m.gender}}
+
+                </td>
+
+                <td>
+
+                  {{m.roleName}}
+
+                </td>
+
+                <td>
+
+                  {{m.phone}}
+
+                </td>
+
+                <td class="text-center">
+
+                  <span *ngIf="m.status=='Active'" class="badge bg-success px-3 py-2">
+
+                    {{m.status}}
+
+                  </span>
+
+                  <span *ngIf="m.status!='Active'" class="badge bg-danger px-3 py-2">
+
+                    {{m.status}}
+
+                  </span>
+
+                </td>
+
+                <td class="text-center">
+
+                  <button class="btn btn-sm btn-outline-primary rounded-pill" (click)="forward('/user/'+m.id)">
+
+                    <i class="fa fa-edit"></i>
+
+                    Edit
+
+                  </button>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+        <!-- Bottom Buttons -->
+
+        <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap">
+
+          <button class="btn btn-warning btn-lg px-4 mb-2" (click)="previous()" [disabled]="form.pageNo==0">
+
+            <i class="fa fa-arrow-left me-2"></i>
+
+            Previous
+
+          </button>
+
+          <div>
+
+            <button class="btn btn-success btn-lg px-4 me-2 mb-2" (click)="forward('/user')">
+
+              <i class="fa fa-plus-circle me-2"></i>
+
+              New
+
+            </button>
+
+            <button class="btn btn-danger btn-lg px-4 mb-2" (click)="deleteMany()">
+
+              <i class="fa fa-trash me-2"></i>
+
+              Delete
+
+            </button>
+
+          </div>
+
+          <button class="btn btn-warning btn-lg px-4 mb-2" (click)="next()" [disabled]="form.nextListSize==0">
+
+            Next
+
+            <i class="fa fa-arrow-right ms-2"></i>
+
+          </button>
+
+        </div>
+
+      </ng-container>
+      <ng-container *ngIf="form.list.length==0">
+
+        <div class="text-center py-5">
+
+          <i class="fa fa-users" style="font-size:90px;color:#6f42c1;">
+          </i>
+
+          <h2 class="page-title mt-4">
+
+            No Users Found
+
+          </h2>
+
+          <p class="text-muted">
+
+            No records are available.
+
+          </p>
+
+          <button class="btn btn-primary btn-lg mt-3" (click)="reset()">
+
+            <i class="fa fa-arrow-left me-2"></i>
+
+            Back
+
+          </button>
+
+        </div>
+
+      </ng-container>
+
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>

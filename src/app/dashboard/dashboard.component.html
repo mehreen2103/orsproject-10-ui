@@ -1,0 +1,136 @@
+<style>
+    .dashboard {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #eef4f7, #dfeef4, #f6f9fb);
+        padding-top: 110px;
+        padding-bottom: 80px;
+    }
+
+    .welcome-card {
+        width: 70%;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        transition: .3s;
+    }
+
+    .welcome-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.20);
+    }
+
+    .welcome-title {
+        color: #233945;
+        font-size: 52px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .welcome-subtitle {
+        color: #607d8b;
+        font-size: 22px;
+        margin-bottom: 35px;
+    }
+
+    .logo {
+        font-size: 80px;
+        margin-bottom: 20px;
+    }
+
+    .info-box {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-top: 35px;
+    }
+
+    .info-card {
+        width: 180px;
+        background: #233945;
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        transition: .3s;
+        cursor: pointer;
+    }
+
+    .info-card:hover {
+        background: #2f4d5a;
+        transform: scale(1.05);
+    }
+
+    .info-card h4 {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .info-card p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .info-card {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .info-card:hover {
+        transform: translateY(-8px) scale(1.03);
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="dashboard">
+
+    <div class="welcome-card">
+
+        <div class="logo">
+            🎓
+        </div>
+
+        <h1 class="welcome-title">
+            Welcome to ORSProject-10
+        </h1>
+
+        <p class="welcome-subtitle">
+            Online Result System Management Dashboard
+        </p>
+
+        <div class="info-box">
+
+            <div class="info-card" routerLink="/user">
+                👤
+                <h4>User</h4>
+                <p>Manage Users</p>
+            </div>
+
+            <div class="info-card" routerLink="/student">
+                🎓
+                <h4>Student</h4>
+                <p>Student Records</p>
+            </div>
+
+            <div class="info-card" routerLink="/faculty">
+                👨‍🏫
+                <h4>Faculty</h4>
+                <p>Faculty Details</p>
+            </div>
+
+            <div class="info-card" routerLink="/marksheet">
+                📊
+                <h4>Report</h4>
+                <p>View Reports</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-footer></app-footer>

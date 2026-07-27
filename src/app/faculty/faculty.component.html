@@ -1,0 +1,331 @@
+<style>
+  .faculty-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .faculty-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+    transition: .3s;
+  }
+
+  .faculty-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .faculty-header {
+    background: linear-gradient(90deg, #233945, #2f4d5a);
+    color: white;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .faculty-header h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .form-control,
+  .form-select {
+    border-radius: 10px;
+    height: 45px;
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #233945;
+    box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #233945;
+  }
+
+  .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 130px;
+  }
+
+  .btn-primary {
+    background: #233945;
+    border-color: #233945;
+  }
+
+  .btn-primary:hover {
+    background: #2f4d5a;
+    border-color: #2f4d5a;
+  }
+
+  .text-danger {
+    font-size: 13px;
+  }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="faculty-bg">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-10">
+
+        <div class="card faculty-card">
+
+          <div class="faculty-header">
+
+            <h2 *ngIf="!form.data.id">Add Faculty</h2>
+            <h2 *ngIf="form.data.id>0">Update Faculty</h2>
+
+          </div>
+
+          <div class="card-body p-4">
+
+            <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+              {{form.message}}
+            </div>
+
+            <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+              {{form.message}}
+            </div>
+
+            <div class="row">
+
+              <!-- First Name -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  First Name <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="form.data.firstName"
+                  placeholder="Enter First Name">
+
+                <small class="text-danger">
+                  {{form.inputerror.firstName}}
+                </small>
+
+              </div>
+
+              <!-- Last Name -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Last Name <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" class="form-control" name="lastName" [(ngModel)]="form.data.lastName"
+                  placeholder="Enter Last Name">
+
+                <small class="text-danger">
+                  {{form.inputerror.lastName}}
+                </small>
+
+              </div>
+
+              <!-- Email -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Email <span class="text-danger">*</span>
+                </label>
+
+                <input type="email" class="form-control" name="email" [(ngModel)]="form.data.email"
+                  placeholder="Enter Email">
+
+                <small class="text-danger">
+                  {{form.inputerror.email}}
+                </small>
+
+              </div>
+
+              <!-- DOB -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Date of Birth <span class="text-danger">*</span>
+                </label>
+
+                <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob"
+                  [ngModel]="form.data.dob | date:'yyyy-MM-dd'">
+
+                <small class="text-danger">
+                  {{form.inputerror.dob}}
+                </small>
+
+              </div>
+
+              <!-- Gender -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Gender <span class="text-danger">*</span>
+                </label>
+
+                <select class="form-select" name="gender" [(ngModel)]="form.data.gender">
+
+                  <option value="undefined">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+
+                </select>
+
+                <small class="text-danger">
+                  {{form.inputerror.gender}}
+                </small>
+
+              </div>
+
+              <!-- Mobile -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Mobile No <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" class="form-control" maxlength="10" name="phoneNo" [(ngModel)]="form.data.phoneNo"
+                  placeholder="Enter Mobile Number">
+
+                <small class="text-danger">
+                  {{form.inputerror.phoneNo}}
+                </small>
+
+              </div>
+
+              <!-- Qualification -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Qualification <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" class="form-control" name="qualification" [(ngModel)]="form.data.qualification"
+                  placeholder="Enter Qualification">
+
+                <small class="text-danger">
+                  {{form.inputerror.qualification}}
+                </small>
+
+              </div>
+              <!-- College -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  College <span class="text-danger">*</span>
+                </label>
+
+                <select class="form-select" name="collegeId" [(ngModel)]="form.data.collegeId">
+
+                  <option value="undefined">Select College</option>
+
+                  <option *ngFor="let obj of form.preload.collegeList" [value]="obj.key">
+                    {{obj.value}}
+                  </option>
+
+                </select>
+
+                <small class="text-danger">
+                  {{form.inputerror.collegeId}}
+                </small>
+
+              </div>
+
+              <!-- Course -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Course <span class="text-danger">*</span>
+                </label>
+
+                <select class="form-select" name="courseId" [(ngModel)]="form.data.courseId">
+
+                  <option value="undefined">Select Course</option>
+
+                  <option *ngFor="let obj of form.preload.courseList" [value]="obj.key">
+                    {{obj.value}}
+                  </option>
+
+                </select>
+
+                <small class="text-danger">
+                  {{form.inputerror.courseId}}
+                </small>
+
+              </div>
+
+              <!-- Subject -->
+
+              <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                  Subject <span class="text-danger">*</span>
+                </label>
+
+                <select class="form-select" name="subjectId" [(ngModel)]="form.data.subjectId">
+
+                  <option value="undefined">Select Subject</option>
+
+                  <option *ngFor="let obj of form.preload.subjectList" [value]="obj.key">
+                    {{obj.value}}
+                  </option>
+
+                </select>
+
+                <small class="text-danger">
+                  {{form.inputerror.subjectId}}
+                </small>
+
+              </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <div class="text-center">
+
+              <button class="btn btn-success btn-lg me-3 px-5" (click)="submit()">
+
+                <i class="fa fa-save me-2"></i>
+                Save
+
+              </button>
+
+              <button class="btn btn-primary btn-lg px-5" (click)="forward('facultylist')">
+
+                <i class="fa fa-list me-2"></i>
+                List
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<app-footer></app-footer>

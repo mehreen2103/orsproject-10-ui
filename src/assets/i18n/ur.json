@@ -1,0 +1,95 @@
+{
+    "Login": "لاگ ان",
+    "Sign In": "سائن ان",
+    "Sign Up": "سائن اپ",
+    "Forget my password?": "کیا آپ اپنا پاس ورڈ بھول گئے ہیں؟",
+    "Login Id": "لاگ ان آئی ڈی",
+    "Password": "پاس ورڈ",
+    "UserRegistration": "صارف رجسٹریشن",
+    "FirstName": "پہلا نام",
+    "LastName": "آخری نام",
+    "LoginId": "لاگ ان آئی ڈی",
+    "DateOfBirth": "تاریخ پیدائش",
+    "Gender": "جنس",
+    "Mobile": "موبائل",
+    "Buttons": {
+        "SignUp": "سائن اپ",
+        "Reset": "ری سیٹ"
+    },
+    "GenderOptions": {
+        "Select": "------------منتخب کریں------------",
+        "Male": "مرد",
+        "Female": "عورت"
+    },
+    "Greetings": {
+        "HiUser": "السلام علیکم، {{name}} ( {{role}} )",
+        "HiGuest": "السلام علیکم، مہمان"
+    },
+    "Links": {
+        "MyProfile": "میرا پروفائل",
+        "ChangePassword": "پاس ورڈ تبدیل کریں",
+        "AddUser": "صارف شامل کریں",
+        "UserList": "صارفین کی فہرست",
+        "AddRole": "کردار شامل کریں",
+        "RoleList": "کرداروں کی فہرست",
+        "AddCollege": "کالج شامل کریں",
+        "CollegeList": "کالج فہرست",
+        "AddStudent": "طالب علم شامل کریں",
+        "StudentList": "طلباء کی فہرست",
+        "AddMarksheet": "مارک شیٹ شامل کریں",
+        "MarksheetList": "مارک شیٹ فہرست",
+        "AddCourse": "کورس شامل کریں",
+        "CourseList": "کورس فہرست",
+        "AddSubject": "مضمون شامل کریں",
+        "SubjectList": "مضامین کی فہرست",
+        "AddTimetable": "ٹائم ٹیبل شامل کریں",
+        "TimetableList": "ٹائم ٹیبل فہرست",
+        "AddFaculty": "فیکلٹی شامل کریں",
+        "FacultyList": "فیکلٹی فہرست",
+        "Logout": "لاگ آؤٹ",
+        "Dashboard": "ڈیش بورڈ",
+        "Welcome": "خوش آمدید",
+        "Login": "لاگ ان"
+    },
+    "LocaleSelect": {
+        "Select": "-------منتخب کریں-------",
+        "English": "انگریزی",
+        "Hindi": "ہندی",
+        "Urdu": "اردو",
+        "French": "فرانسیسی"
+    },
+    "UserForm": {
+        "AddUser": "صارف شامل کریں",
+        "UpdateUser": "صارف کو اپ ڈیٹ کریں",
+        "FirstName": "پہلا نام",
+        "LastName": "آخری نام",
+        "LoginId": "لاگ ان آئی ڈی",
+        "Password": "پاس ورڈ",
+        "DateOfBirth": "تاریخ پیدائش",
+        "Gender": "جنس",
+        "Role": "کردار",
+        "Mobile": "موبائل",
+        "AlternateMobile": "متبادل موبائل",
+        "Status": "حالت",
+        "Placeholders": {
+            "FirstName": "پہلا نام درج کریں",
+            "LastName": "آخری نام درج کریں",
+            "LoginId": "لاگ ان آئی ڈی درج کریں",
+            "Password": "پاس ورڈ درج کریں",
+            "DateOfBirth": "تاریخ پیدائش منتخب کریں",
+            "Mobile": "موبائل نمبر درج کریں",
+            "AlternateMobile": "متبادل موبائل نمبر درج کریں"
+        },
+        "SelectOptions": {
+            "Select": "------------منتخب کریں------------",
+            "Male": "مرد",
+            "Female": "عورت",
+            "Active": "فعال",
+            "Inactive": "غیر فعال"
+        },
+        "Buttons": {
+            "Save": "محفوظ کریں",
+            "List": "فہرست"
+        }
+    }
+}

@@ -1,0 +1,410 @@
+<style>
+    .hm {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4ff, #f7f9fc, #eef8f3);
+        background-attachment: fixed;
+        background-size: cover;
+        padding-top: 90px;
+        padding-bottom: 40px;
+    }
+
+    /* Page Title */
+    .page-title {
+        text-align: center;
+        font-size: 55px;
+        font-weight: 700;
+        color: #2F4156;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, .15);
+        margin-bottom: 25px;
+    }
+
+    /* Search Card */
+    .search-card {
+        width: 85%;
+        margin: 0 auto 25px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+        padding: 25px;
+    }
+
+    /* Search Inputs */
+    .search-card .form-control {
+        height: 48px;
+        border-radius: 10px;
+    }
+
+    .search-card .form-control:focus {
+        border-color: #2193b0;
+        box-shadow: 0 0 10px rgba(33, 147, 176, .30);
+    }
+
+    /* Table Card */
+    .table-responsive {
+        width: 85%;
+        margin: auto;
+        background: #fff;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, .15);
+    }
+
+    /* Table */
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table thead {
+        background: linear-gradient(90deg, #0f4c81, #2193b0);
+        color: #fff;
+    }
+
+    .table th {
+        border: none;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 16px;
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 16px;
+    }
+
+    .table tbody tr {
+        transition: .25s;
+    }
+
+    .table tbody tr:hover {
+        background: #eef8ff;
+    }
+
+    /* Buttons */
+
+    .btn-primary {
+        background: linear-gradient(45deg, #0066ff, #00b4ff);
+        border: none;
+    }
+
+    .btn-danger {
+        border: none;
+    }
+
+    .btn-warning {
+        border: none;
+    }
+
+    .btn-dark {
+        border: none;
+    }
+
+    .button-wrapper {
+        width: 85%;
+        margin: 25px auto;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="hm">
+
+    <ng-container *ngIf="form.list.length>0">
+
+        <div class="page-title">
+
+            <i class="fa fa-credit-card"></i>
+
+            Fee List
+
+        </div>
+
+        <!-- Success -->
+
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div *ngIf="!form.error && form.message" class="col-md-4 alert alert-success text-center">
+
+                {{form.message}}
+
+            </div>
+
+            <div class="col-md-4"></div>
+
+        </div>
+
+        <!-- Error -->
+
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div *ngIf="form.error && form.message" class="col-md-4 alert alert-danger text-center">
+
+                {{form.message}}
+
+            </div>
+
+            <div class="col-md-4"></div>
+
+        </div>
+
+        <!-- Search Card -->
+
+        <div class="search-card">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <input type="text" class="form-control" name="studentName"
+                        [(ngModel)]="form.searchParams.studentName" placeholder="🔍 Search Student Name">
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <input type="text" class="form-control" name="paymentStatus"
+                        [(ngModel)]="form.searchParams.paymentStatus" placeholder="💳 Search Payment Status">
+
+                </div>
+
+                <div class="col-md-4 text-center">
+
+                    <button class="btn btn-primary mr-2" (click)="search()">
+
+                        <i class="fa fa-search"></i>
+
+                        Search
+
+                    </button>
+
+                    <button class="btn btn-dark" (click)="reset()">
+
+                        <i class="fa fa-refresh"></i>
+
+                        Reset
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Table -->
+
+        <div class="table-responsive">
+
+            <table class="table table-hover table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th width="60">
+
+                            <input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
+
+                        </th>
+
+                        <th>S.No</th>
+
+                        <th>Student Name</th>
+
+                        <th>Amount</th>
+
+                        <th>Payment Date</th>
+
+                        <th>Payment Status</th>
+
+                        <th>Edit</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let m of form.list;let i=index">
+
+                        <td>
+
+                            <input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id"
+                                [value]="isMasterSel">
+
+                        </td>
+
+                        <td>{{(form.pageNo*5)+i+1}}</td>
+
+                        <td>{{m.studentName}}</td>
+
+                        <td>₹ {{m.amount}}</td>
+
+                        <td>{{m.paymentDate}}</td>
+
+                        <td>
+                            {{m.paymentStatus}}
+
+                            <span *ngIf="m.paymentStatus=='Paid'" class="badge badge-success"
+                                style="padding:8px 15px;font-size:14px;border-radius:20px;">
+
+                                <i class="fa fa-check-circle"></i>
+
+                                Paid
+
+                            </span>
+
+                            <span *ngIf="m.paymentStatus=='Pending'" class="badge badge-warning"
+                                style="padding:8px 15px;font-size:14px;border-radius:20px;color:#fff;">
+
+                                <i class="fa fa-clock-o"></i>
+
+                                Pending
+
+                            </span>
+
+                            <span *ngIf="m.paymentStatus=='Failed'" class="badge badge-danger"
+                                style="padding:8px 15px;font-size:14px;border-radius:20px;">
+
+                                <i class="fa fa-times-circle"></i>
+
+                                Failed
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn btn-outline-primary btn-sm" (click)="forward('/fee/'+m.id)">
+
+                                <i class="fa fa-pencil"></i>
+
+                                Edit
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Bottom Buttons -->
+
+        <div class="button-wrapper">
+
+            <div class="row">
+
+                <div class="col-md-3 text-left">
+
+                    <button class="btn btn-warning" (click)="previous()" [disabled]="form.pageNo==0">
+
+                        <i class="fa fa-arrow-left"></i>
+
+                        Previous
+
+                    </button>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    <button class="btn btn-primary" (click)="forward('/fee')">
+
+                        <i class="fa fa-plus-circle"></i>
+
+                        New
+
+                    </button>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    <button class="btn btn-danger" (click)="deleteMany()">
+
+                        <i class="fa fa-trash"></i>
+
+                        Delete
+
+                    </button>
+
+                </div>
+
+                <div class="col-md-3 text-right">
+
+                    <button class="btn btn-warning" (click)="next()" [disabled]="form.nextListSize==0">
+
+                        Next
+
+                        <i class="fa fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </ng-container>
+
+    <!-- No Data -->
+
+    <ng-container *ngIf="form.list.length==0">
+
+        <div class="container pt-5">
+
+            <div class="card shadow-lg border-0" style="width:60%;margin:auto;border-radius:20px;">
+
+                <div class="card-body text-center p-5">
+
+                    <i class="fa fa-folder-open" style="font-size:70px;color:#b0b0b0;">
+                    </i>
+
+                    <h2 class="mt-4" style="color:#2F4156;">
+
+                        No Fee Records Found
+
+                    </h2>
+
+                    <p class="text-muted">
+
+                        There are no fee records available.
+
+                    </p>
+
+                    <div *ngIf="form.error && form.message" class="alert alert-danger">
+
+                        {{form.message}}
+
+                    </div>
+
+                    <button class="btn btn-primary btn-lg" (click)="reset()">
+
+                        <i class="fa fa-refresh"></i>
+
+                        Back
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </ng-container>
+
+</div>
+
+<app-footer></app-footer>
