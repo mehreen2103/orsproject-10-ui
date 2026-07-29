@@ -1,136 +1,341 @@
-<style type="text/css">
-  .input-group-addon {
-    box-shadow: 9px 8px 7px #001a33;
+<style>
+  .marksheet-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+    padding-top: 100px;
+    padding-bottom: 50px;
   }
 
-  .hm {
-    background-image: url('assets/files/add.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    padding-top: 25px;
-    padding-bottom: 25px;
+  .marksheet-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+    transition: .3s;
+  }
+
+  .marksheet-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .marksheet-header {
+    background: linear-gradient(90deg, #233945, #2f4d5a);
+    color: white;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .marksheet-header h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .form-control {
+    height: 45px;
+    border-radius: 10px;
+  }
+
+  .input-group-text {
+    background: #233945;
+    color: white;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .form-control:focus {
+    border-color: #233945;
+    box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #233945;
+  }
+
+  .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 130px;
+  }
+
+  .btn-success {
+    background: #198754;
+  }
+
+  .btn-primary {
+    background: #233945;
+    border-color: #233945;
+  }
+
+  .btn-primary:hover {
+    background: #2f4d5a;
+  }
+
+  .text-danger {
+    font-size: 13px;
   }
 </style>
 
+
 <app-navbar></app-navbar>
 
-<br><br>
 
-<div class="hm">
-  <main>
-    <div class="row pt-3">
+<div class="marksheet-bg">
 
-      <div class="col-md-4 mb-4"></div>
+  <div class="container">
 
-      <div class="col-md-4 mb-4">
-        <div class="card input-group-addon">
-          <div class="card-body">
+    <div class="row justify-content-center">
 
-            <h3 *ngIf="!form.data.id" class="text-center default-text text-dark">Add Marksheet</h3>
-            <h3 *ngIf="form.data.id > 0" class="text-center default-text text-dark">Update Marksheet</h3>
+      <div class="col-lg-6">
 
-            <div>
-              <H4 align="center">
-                <div *ngIf="!form.error && form.message" class="alert alert-success alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  {{ form.message }}
-                </div>
-              </H4>
-              <H4 align="center">
-                <div *ngIf="form.error && form.message" class="alert alert-danger alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  {{ form.message }}
-                </div>
-              </H4>
-            </div>
 
-            <div class="md-form">
+        <div class="card marksheet-card">
 
-              <!-- Roll No -->
-              <span class="pl-sm-5"><b>Roll No</b> <span style="color: red;">*</span></span><br>
-              <div class="col-sm-12">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-id-card grey-text" style="font-size: 1rem;"></i></div>
-                  </div>
-                  <input type="text" class="form-control" name="rollNo" [(ngModel)]="form.data.rollNo" maxlength="5"
-                    placeholder="Enter Roll No">
-                </div>
-              </div>
-              <font color="red" class="pl-sm-5">{{ form.inputerror.rollNo }}</font><br>
 
-              <!-- Name -->
-              <span class="pl-sm-5"><b>Name</b> <span style="color: red;">*</span></span><br>
-              <div class="col-sm-12">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-user grey-text" style="font-size: 1rem;"></i></div>
-                  </div>
-                  <select name="studentId" [(ngModel)]="form.data.studentId" class="form-control">
-                    <option value="undefined">------------Select------------</option>
-                    <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">{{ obj.value }}</option>
-                  </select>
-                </div>
-              </div>
-              <font color="red" class="pl-sm-5">{{ form.inputerror.studentId }}</font><br>
+          <div class="marksheet-header">
 
-              <!-- Physics -->
-              <span class="pl-sm-5"><b>Physics</b> <span style="color: red;">*</span></span><br>
-              <div class="col-sm-12">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-flask grey-text" style="font-size: 1rem;"></i></div>
-                  </div>
-                  <input type="text" class="form-control" name="physics" [(ngModel)]="form.data.physics" maxlength="3"
-                    placeholder="Enter Physics Marks">
-                </div>
-              </div>
-              <font color="red" class="pl-sm-5">{{ form.inputerror.physics }}</font><br>
+            <h2 *ngIf="!form.data.id">
+              <i class="fas fa-file-alt me-2"></i>
+              Add Marksheet
+            </h2>
 
-              <!-- Chemistry -->
-              <span class="pl-sm-5"><b>Chemistry</b> <span style="color: red;">*</span></span><br>
-              <div class="col-sm-12">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-vial grey-text" style="font-size: 1rem;"></i></div>
-                  </div>
-                  <input type="text" class="form-control" name="chemistry" [(ngModel)]="form.data.chemistry" maxlength="3"
-                    placeholder="Enter Chemistry Marks">
-                </div>
-              </div>
-              <font color="red" class="pl-sm-5">{{ form.inputerror.chemistry }}</font><br>
+            <h2 *ngIf="form.data.id > 0">
+              <i class="fas fa-edit me-2"></i>
+              Update Marksheet
+            </h2>
 
-              <!-- Maths -->
-              <span class="pl-sm-5"><b>Maths</b> <span style="color: red;">*</span></span><br>
-              <div class="col-sm-12">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-square-root-alt grey-text" style="font-size: 1rem;"></i></div>
-                  </div>
-                  <input type="text" class="form-control" name="maths" [(ngModel)]="form.data.maths" maxlength="3"
-                    placeholder="Enter Maths Marks">
-                </div>
-              </div>
-              <font color="red" class="pl-sm-5">{{ form.inputerror.maths }}</font><br>
-
-              <!-- Buttons -->
-              <div class="text-center">
-                <input type="submit" (click)="submit()" class="btn btn-success btn-md" style="font-size: 17px"
-                  value="Save">&nbsp;
-                <input type="submit" (click)="forward('marksheetlist')" class="btn btn-primary btn-md"
-                  style="font-size: 17px" value="List">
-              </div>
-
-            </div>
           </div>
+
+
+          <div class="card-body p-4">
+
+
+            <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+
+              {{form.message}}
+
+            </div>
+
+
+            <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+
+              {{form.message}}
+
+            </div>
+
+
+
+            <!-- Roll No -->
+
+            <label class="form-label">
+              <i class="fas fa-id-card me-2"></i>
+              Roll No <span class="text-danger">*</span>
+            </label>
+
+
+            <div class="input-group mb-2">
+
+              <span class="input-group-text">
+                <i class="fas fa-id-card"></i>
+              </span>
+
+
+              <input type="text" class="form-control" name="rollNo" maxlength="5" [(ngModel)]="form.data.rollNo"
+                placeholder="Enter Roll No">
+
+            </div>
+
+            <small class="text-danger">
+              {{form.inputerror.rollNo}}
+            </small>
+
+
+
+
+            <br>
+
+
+            <!-- Student -->
+
+            <label class="form-label">
+              <i class="fas fa-user me-2"></i>
+              Name <span class="text-danger">*</span>
+            </label>
+
+
+            <div class="input-group mb-2">
+
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+
+
+              <select name="studentId" class="form-control" [(ngModel)]="form.data.studentId">
+
+
+                <option value="undefined">
+                  ------------Select------------
+                </option>
+
+
+                <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">
+
+                  {{obj.value}}
+
+                </option>
+
+
+              </select>
+
+
+            </div>
+
+
+            <small class="text-danger">
+              {{form.inputerror.studentId}}
+            </small>
+
+
+
+            <br>
+
+
+
+            <!-- Physics -->
+
+            <label class="form-label">
+              <i class="fas fa-flask me-2"></i>
+              Physics <span class="text-danger">*</span>
+            </label>
+
+
+            <div class="input-group mb-2">
+
+              <span class="input-group-text">
+                <i class="fas fa-flask"></i>
+              </span>
+
+
+              <input type="text" class="form-control" name="physics" maxlength="3" [(ngModel)]="form.data.physics"
+                placeholder="Enter Physics Marks">
+
+
+            </div>
+
+
+            <small class="text-danger">
+              {{form.inputerror.physics}}
+            </small>
+
+
+            <br>
+
+
+
+            <!-- Chemistry -->
+
+            <label class="form-label">
+              <i class="fas fa-vial me-2"></i>
+              Chemistry <span class="text-danger">*</span>
+            </label>
+
+
+            <div class="input-group mb-2">
+
+
+              <span class="input-group-text">
+                <i class="fas fa-vial"></i>
+              </span>
+
+
+              <input type="text" class="form-control" name="chemistry" maxlength="3" [(ngModel)]="form.data.chemistry"
+                placeholder="Enter Chemistry Marks">
+
+
+            </div>
+
+
+            <small class="text-danger">
+              {{form.inputerror.chemistry}}
+            </small>
+
+
+            <br>
+
+
+
+
+            <!-- Maths -->
+
+            <label class="form-label">
+              <i class="fas fa-calculator me-2"></i>
+              Maths <span class="text-danger">*</span>
+            </label>
+
+
+            <div class="input-group mb-2">
+
+
+              <span class="input-group-text">
+                <i class="fas fa-calculator"></i>
+              </span>
+
+
+              <input type="text" class="form-control" name="maths" maxlength="3" [(ngModel)]="form.data.maths"
+                placeholder="Enter Maths Marks">
+
+
+            </div>
+
+
+            <small class="text-danger">
+              {{form.inputerror.maths}}
+            </small>
+
+
+
+
+            <hr class="my-4">
+
+
+
+            <div class="text-center">
+
+
+              <button class="btn btn-success btn-lg me-3" (click)="submit()">
+
+                <i class="fas fa-save me-2"></i>
+                Save
+
+              </button>
+
+
+
+              <button class="btn btn-primary btn-lg" (click)="forward('marksheetlist')">
+
+                <i class="fas fa-list me-2"></i>
+                List
+
+              </button>
+
+
+            </div>
+
+
+
+          </div>
+
+
         </div>
+
+
       </div>
 
-      <div class="col-md-4 mb-4"></div>
-
     </div>
-  </main>
+
+  </div>
+
 </div>
+
+
 
 <app-footer></app-footer>

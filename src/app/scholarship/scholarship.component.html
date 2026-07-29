@@ -1,0 +1,234 @@
+<style>
+    .scholarship-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .scholarship-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .scholarship-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .scholarship-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .scholarship-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="scholarship-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card scholarship-card">
+
+                    <div class="scholarship-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-award me-2"></i>
+                            Add Scholarship
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-edit me-2"></i>
+                            Update Scholarship
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            {{form.message}}
+                        </div>
+
+                        <!-- Scholarship Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-award me-2"></i>
+                            Scholarship Name <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-award"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="scholarshipName"
+                                [(ngModel)]="form.data.scholarshipName" placeholder="Enter Scholarship Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.scholarshipName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Amount -->
+
+                        <label class="form-label">
+                            <i class="fas fa-money-bill-wave me-2"></i>
+                            Amount <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="amount" [(ngModel)]="form.data.amount"
+                                placeholder="Enter Amount">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.amount}}
+                        </small>
+
+                        <br>
+                        <!-- Eligibility -->
+
+                        <label class="form-label">
+                            <i class="fas fa-user-check me-2"></i>
+                            Eligibility <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-user-check"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="eligibility"
+                                [(ngModel)]="form.data.eligibility" placeholder="Enter Eligibility">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.eligibility}}
+                        </small>
+
+                        <br>
+
+                        <!-- Last Date -->
+
+                        <label class="form-label">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Last Date <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+
+                            <input type="date" class="form-control" name="lastDate" [(ngModel)]="form.data.lastDate">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.lastDate}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+
+                                <i class="fas fa-save me-2"></i> Save</button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/scholarshiplist')">
+
+                                <i class="fas fa-list me-2"></i> List </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-footer></app-footer>

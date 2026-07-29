@@ -42,6 +42,10 @@ export class BaseCtl implements OnInit {
         var _self = this;
         _self.initApi(endpoint);
 
+        this.route.queryParams.subscribe((mehreen:any) => {
+            this.form.message = mehreen['errorMessage'];
+            this.form.error = true;
+        });
         serviceLocator.getPathVariable(route, function (params: any) {
             _self.form.data.id = params["id"];
         })

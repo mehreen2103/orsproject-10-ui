@@ -27,7 +27,6 @@ import { RoleListComponent } from './role/role-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { CollegeListComponent } from './college/college-list.component';
 import { StudentListComponent } from './student/student-list.component';
-
 import { CourseListComponent } from './course/course-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
@@ -54,6 +53,10 @@ import { DepartmentListComponent } from './department/department-list.component'
 import { FeeComponent } from './fee/fee.component';
 import { FeeListComponent } from './fee/fee-list.component';
 import { ChangepasswordComponent } from './user/changepassword.component';
+import { ScholarshipComponent } from './scholarship/scholarship.component';
+import { ScholarshipListComponent } from './scholarship/scholarship-list.component';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { InsuranceListComponent } from './insurance/insurance-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -101,6 +104,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     DepartmentListComponent,
     FeeComponent,
     FeeListComponent,
+    ScholarshipComponent,
+    ScholarshipListComponent,
+    InsuranceComponent,
+    InsuranceListComponent,
 
   ],
   imports: [

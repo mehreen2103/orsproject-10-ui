@@ -36,6 +36,11 @@ import { DepartmentListComponent } from './department/department-list.component'
 import { FeeListComponent } from './fee/fee-list.component';
 import { FeeComponent } from './fee/fee.component';
 import { ChangepasswordComponent } from './user/changepassword.component';
+import { ScholarshipComponent } from './scholarship/scholarship.component';
+import { ScholarshipListComponent } from './scholarship/scholarship-list.component';
+import { InsuranceListComponent } from './insurance/insurance-list.component';
+import { InsuranceComponent } from './insurance/insurance.component';
+
 
 
 const routes: Routes = [
@@ -244,6 +249,30 @@ const routes: Routes = [
    {
     path: 'fee/:id',
     component: FeeComponent
+  },
+  {
+    path: 'scholarship',
+    component: ScholarshipComponent,
+  },
+  {
+    path: 'scholarshiplist',
+    component: ScholarshipListComponent,
+  },
+   {
+    path: 'scholarship/:id',
+    component: ScholarshipComponent
+  },
+  {
+    path: 'insurance',
+    component: InsuranceComponent,
+  },
+  {
+    path: 'insurancelist',
+    component: InsuranceListComponent,
+  },
+   {
+    path: 'insurance/:id',
+    component: InsuranceComponent
   },
   
 

@@ -56,45 +56,48 @@
     border: 5px solid white;
     box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
   }
-  .btn-success{
-    background:linear-gradient(135deg,#28a745,#20c997);
-    border:none;
-    color:#fff;
-    box-shadow:0 8px 20px rgba(40,167,69,.35);
-    transition:.35s;
-}
 
-.btn-success:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 28px rgba(40,167,69,.45);
-}
+  .btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border: none;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, .35);
+    transition: .35s;
+  }
 
-.btn-primary{
-    background:linear-gradient(135deg,#0d6efd,#6f42c1);
-    border:none;
-    color:#fff;
-    box-shadow:0 8px 20px rgba(13,110,253,.35);
-    transition:.35s;
-}
+  .btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(40, 167, 69, .45);
+  }
 
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 28px rgba(13,110,253,.45);
-}
+  .btn-primary {
+    background: #233945;
+    border-color: #233945;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(35, 57, 69, .35);
+    transition: .35s;
+  }
 
-.input-group{
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-    border-radius:10px;
-}
+  .btn-primary:hover {
+    background: #2f4d5a;
+    border-color: #2f4d5a;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(35, 57, 69, .45);
+  }
 
-.form-control,
-.form-select{
-    border-radius:0 10px 10px 0;
-}
+  .input-group {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+    border-radius: 10px;
+  }
 
-.input-group-text{
-    border-radius:10px 0 0 10px;
-}
+  .form-control,
+  .form-select {
+    border-radius: 0 10px 10px 0;
+  }
+
+  .input-group-text {
+    border-radius: 10px 0 0 10px;
+  }
 </style>
 
 <app-navbar></app-navbar>
@@ -541,9 +544,7 @@
 
                 <div class="col-md-12 mb-4">
 
-                  <label class="form-label">
-                    Upload Image
-                  </label>
+                  <label class="form-label"> Upload Image </label>
 
                   <div class="input-group">
 
@@ -573,7 +574,7 @@
 
                 <button type="button" class="btn btn-primary btn-lg px-5" (click)="forward('/userlist')">
 
-                  <i class="fa fa-list me-2"></i>
+                  <i class="fa fa-list-alt me-2"></i>
 
                   {{'UserForm.Buttons.List'|translate}}
 
