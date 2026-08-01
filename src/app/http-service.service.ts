@@ -27,51 +27,17 @@ export class HttpServiceService {
     });
   }
 
-  // private handleError(error: any): void {
-  //   console.error('Request failed', error);
-  //   if (error.status === 401) {
-  //     localStorage.clear();
-  //     this.router.navigate(['/login'], {
-  //       queryParams: { errorMessage: error.error.error }
-  //     });
-  //   }
-  // }
   private handleError(error: any, callback: any): void {
-
-  console.error('Request failed', error);
-
-  if (error.status === 503 || error.status === 500 || error.status === 0) {
-
+    console.error('Request failed', error);
+    if (error.status === 503) {
     callback({
-      success: false,
-      result: {
-        message: "Database Server Down!! Please try again later."
-      }
-    });
-
-    return;
+    success: false,
+    result: {
+      message: error.error?.result?.message
+    }
+  });
+    }
   }
-
-  if (error.status === 401) {
-
-    localStorage.clear();
-
-    this.router.navigate(['/login'], {
-      queryParams: {
-        errorMessage: error.error.error
-      }
-    });
-
-  }
-}
-
-  //   else if (error.status === 401) {
-  //     localStorage.clear();
-  //     this.router.navigate(['/login'], {
-  //       queryParams: { errorMessage: error.error.error }
-  //     });
-  //   }
-  //  }
   
   }
 

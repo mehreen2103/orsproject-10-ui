@@ -47,7 +47,7 @@
 
   /* Hover */
   .navbar-custom .dropdown-item:hover {
-    background: #233945 !important;
+    background: #8e94977d !important;
     color: #ffffff !important;
   }
 
@@ -102,7 +102,7 @@
 
   .dropdown-submenu>.dropdown-toggle::after {
     float: right;
-    margin-top: 8px;
+    margin-top: 3px;
     content: "▶";
     border: none;
   }
@@ -270,7 +270,7 @@
           <ul class="dropdown-menu">
 
             <!-- Weather -->
-            <li class="dropdown-submenu">
+            <!-- <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle text-dark" href="#"> Weather </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-dark" [routerLink]="['/weather']"> Add Weather</a> </li>
@@ -278,19 +278,19 @@
                 <li><a class="dropdown-item text-dark" [routerLink]="['/weatherlist']"> Weather List </a></li>
 
               </ul>
-            </li>
+            </li> -->
 
             <!-- Drone -->
-            <li class="dropdown-submenu">
+            <!-- <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle text-dark" href="#">Drone</a>
               <ul class="dropdown-menu">
                 <li> <a class="dropdown-item text-dark" [routerLink]="['/drone']">Add Drone</a></li>
 
                 <li><a class="dropdown-item text-dark" [routerLink]="['/dronelist']"> Drone List</a></li>
               </ul>
-            </li>
+            </li> -->
             <!-- Branch -->
-            <li class="dropdown-submenu">
+            <!-- <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle text-dark" href="#"> Branch </a>
               <ul class="dropdown-menu">
                 <li> <a class="dropdown-item text-dark" [routerLink]="['/branch']"> Add Branch</a> </li>
@@ -298,7 +298,7 @@
                 <li><a class="dropdown-item text-dark" [routerLink]="['/branchlist']"> Branch List</a> </li>
               </ul>
 
-            </li>
+            </li> -->
             <!-- Department -->
             <!-- <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle text-dark" href="#"> Department </a>
@@ -347,6 +347,26 @@
                 <li>
                   <a class="dropdown-item text-dark" [routerLink]="['/insurancelist']">
                     Insurance List
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- Assignment -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#">
+                Assignment
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/assignment']">
+                    Add Assignment
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/assignmentlist']">
+                    Assignment List
                   </a>
                 </li>
               </ul>

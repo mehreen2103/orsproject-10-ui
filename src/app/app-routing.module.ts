@@ -40,6 +40,8 @@ import { ScholarshipComponent } from './scholarship/scholarship.component';
 import { ScholarshipListComponent } from './scholarship/scholarship-list.component';
 import { InsuranceListComponent } from './insurance/insurance-list.component';
 import { InsuranceComponent } from './insurance/insurance.component';
+import { AssignmentListComponent } from './assignment/assignment-list.component';
+import { AssignmentComponent } from './assignment/assignment.component';
 
 
 
@@ -273,6 +275,18 @@ const routes: Routes = [
    {
     path: 'insurance/:id',
     component: InsuranceComponent
+  },
+  {
+    path: 'assignment',
+    component: AssignmentComponent,
+  },
+  {
+    path: 'assignmentlist',
+    component: AssignmentListComponent,
+  },
+   {
+    path: 'assignment/:id',
+    component: AssignmentComponent
   },
   
 

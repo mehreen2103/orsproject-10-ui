@@ -52,7 +52,7 @@
     <ng-container *ngIf="form.list.length > 0">
 
         <div align="center">
-            <h1 style="color:#2F4156;"><b>Insurance List</b></h1>
+            <h1 style="color:#2F4156;"><b>Assignment List</b></h1>
         </div>
 
         <br>
@@ -103,15 +103,15 @@
 
             <div class="col-sm-3">
 
-                <input type="text" name="policyHolderName" [(ngModel)]="form.searchParams.policyHolderName"
-                    placeholder="Enter Policy Holder Name" class="form-control">
+                <input type="text" name="title" [(ngModel)]="form.searchParams.title" placeholder="Enter Title"
+                    class="form-control">
 
             </div>
 
             <div class="col-sm-3">
 
-                <input type="text" name="policyType" [(ngModel)]="form.searchParams.policyType"
-                    placeholder="Enter Policy Type" class="form-control">
+                <input type="text" name="subject" [(ngModel)]="form.searchParams.subject" placeholder="Enter Subject"
+                    class="form-control">
 
             </div>
 
@@ -146,13 +146,13 @@
 
                         <th class="text">S.NO</th>
 
-                        <th class="text">Policy Holder Name</th>
+                        <th class="text">Title</th>
 
-                        <th class="text">Policy Type</th>
+                        <th class="text">Due Date</th>
 
-                        <th class="text">Premium Amount</th>
+                        <th class="text">Subject</th>
 
-                        <th class="text">Expiry Date</th>
+                        <th class="text">Marks</th>
 
                         <th class="text">Edit</th>
 
@@ -173,17 +173,17 @@
 
                         <td>{{(form.pageNo * 5) + i + 1}}</td>
 
-                        <td>{{m.policyHolderName}}</td>
+                        <td>{{m.title}}</td>
 
-                        <td>{{m.policyType}}</td>
+                        <td>{{m.dueDate | date:'dd/MM/yyyy'}}</td>
 
-                        <td>{{m.premiumAmount}}</td>
+                        <td>{{m.subject}}</td>
 
-                        <td>{{m.expiryDate | date:'dd/MM/yyyy'}}</td>
+                        <td>{{m.marks}}</td>
 
                         <td>
 
-                            <a (click)="forward('/insurance/' + m.id)" style="cursor:pointer;">
+                            <a (click)="forward('/assignment/' + m.id)" style="cursor:pointer;">
                                 Edit
                             </a>
 
@@ -214,7 +214,7 @@
 
                     <td align="center">
 
-                        <input type="submit" (click)="forward('/insurance')" class="btn btn-primary btn-md"
+                        <input type="submit" (click)="forward('/assignment')" class="btn btn-primary btn-md"
                             style="font-size:17px" value="New">
 
                     </td>
@@ -248,7 +248,7 @@
         <div align="center">
 
             <h1 style="font-size:40px;color:#162390;">
-                Insurance List
+                Assignment List
             </h1>
 
         </div>

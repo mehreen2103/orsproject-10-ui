@@ -57,6 +57,8 @@ import { ScholarshipComponent } from './scholarship/scholarship.component';
 import { ScholarshipListComponent } from './scholarship/scholarship-list.component';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { InsuranceListComponent } from './insurance/insurance-list.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { AssignmentListComponent } from './assignment/assignment-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -108,6 +110,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ScholarshipListComponent,
     InsuranceComponent,
     InsuranceListComponent,
+    AssignmentComponent,
+    AssignmentListComponent,
 
   ],
   imports: [
