@@ -76,7 +76,9 @@
     "LocaleSelect": {
         "Select": "-------Select-------",
         "English": "English",
-        "Hindi": "Hindi"
+        "Hindi": "Hindi",
+        "French": "French",
+        "Urdu": "Urdu"
     },
     "UserForm": {
         "AddUser": "Add User",

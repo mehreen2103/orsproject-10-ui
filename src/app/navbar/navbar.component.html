@@ -371,6 +371,26 @@
                 </li>
               </ul>
             </li>
+            <!-- Classroom -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#">
+                Classroom
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/classroom']">
+                    Add Classroom
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/classroomlist']">
+                    Classroom List
+                  </a>
+                </li>
+              </ul>
+            </li>
             <!-- More -->
             <li class="dropdown-submenu">
 
@@ -414,6 +434,8 @@
         <option value="0">{{ 'LocaleSelect.Select' | translate }}</option>
         <option value="en">{{ 'LocaleSelect.English' | translate }}</option>
         <option value="hi">{{ 'LocaleSelect.Hindi' | translate }}</option>
+        <option value="fr">{{ 'LocaleSelect.French' | translate }}</option>
+        <option value="ur">{{ 'LocaleSelect.Urdu' | translate }}</option>
       </select>
     </div>
   </div>

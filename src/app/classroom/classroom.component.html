@@ -1,0 +1,238 @@
+<style>
+    .classroom-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .classroom-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .classroom-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .classroom-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .classroom-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="classroom-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card classroom-card">
+
+                    <div class="classroom-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-school me-2"></i>
+                            Add Classroom
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-edit me-2"></i>
+                            Update Classroom
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            {{form.message}}
+                        </div>
+
+                        <!-- Room Number -->
+
+                        <label class="form-label">
+                            <i class="fas fa-door-open me-2"></i>
+                            Room Number <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-door-open"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="roomNumber" [(ngModel)]="form.data.roomNumber"
+                                placeholder="Enter Room Number">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.roomNumber}}
+                        </small>
+
+                        <br>
+
+                        <!-- Floor -->
+
+                        <label class="form-label">
+                            <i class="fas fa-building me-2"></i>
+                            Floor <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-building"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="floor" [(ngModel)]="form.data.floor"
+                                placeholder="Enter Floor">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.floor}}
+                        </small>
+
+                        <br>
+
+                        <!-- Capacity -->
+
+                        <label class="form-label">
+                            <i class="fas fa-users me-2"></i>
+                            Capacity <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-users"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="capacity" [(ngModel)]="form.data.capacity"
+                                placeholder="Enter Capacity">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.capacity}}
+                        </small>
+
+                        <br>
+
+                        <!-- Building Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-university me-2"></i>
+                            Building Name <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-university"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="buildingName"
+                                [(ngModel)]="form.data.buildingName" placeholder="Enter Building Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.buildingName}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i>
+                                Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/classroomlist')">
+                                <i class="fas fa-list me-2"></i>
+                                List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-footer></app-footer>

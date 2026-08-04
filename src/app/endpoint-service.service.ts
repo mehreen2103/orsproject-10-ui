@@ -25,4 +25,5 @@ export class EndpointServiceService {
   public SCHOLARSHIP = this.SERVER_URL + "/Scholarship";
   public INSURANCE = this.SERVER_URL + "/Insurance";
   public ASSIGNMENT = this.SERVER_URL + "/Assignment";
+  public CLASSROOM = this.SERVER_URL + "/Classroom";
 }
