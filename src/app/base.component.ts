@@ -50,7 +50,7 @@ export class BaseCtl implements OnInit {
         });
 
         serviceLocator.getPathVariable(route, function (params: any) {
-            
+
             _self.form.data.id = params["id"];
         })
     }
@@ -137,6 +137,7 @@ export class BaseCtl implements OnInit {
     uploadFile() {
 
         let self = this;
+        
         const formData = new FormData();
 
         formData.append('file', this.fileToUpload);
@@ -144,6 +145,7 @@ export class BaseCtl implements OnInit {
         return this.serviceLocator.httpService.post("http://localhost:8080/User/profilePic/" + this.form.data.id, formData, function (res: any) {
 
             console.log("imageId = " + res.result.imageId);
+            
             self.form.data.imageId = res.result.imageId;
 
         });

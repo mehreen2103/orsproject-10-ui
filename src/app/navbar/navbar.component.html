@@ -379,14 +379,30 @@
 
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item text-dark" [routerLink]="['/classroom']">
-                    Add Classroom
+                  <a class="dropdown-item text-dark" [routerLink]="['/classroom']"> Add Classroom </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/classroomlist']"> Classroom List </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ATM -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle text-dark" href="#">ATM
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item text-dark" [routerLink]="['/atm']">
+                    Add ATM
                   </a>
                 </li>
 
                 <li>
-                  <a class="dropdown-item text-dark" [routerLink]="['/classroomlist']">
-                    Classroom List
+                  <a class="dropdown-item text-dark" [routerLink]="['/atmlist']">
+                    ATM List
                   </a>
                 </li>
               </ul>

@@ -61,6 +61,8 @@ import { AssignmentComponent } from './assignment/assignment.component';
 import { AssignmentListComponent } from './assignment/assignment-list.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomListComponent } from './classroom/classroom-list.component';
+import { AtmComponent } from './atm/atm.component';
+import { AtmListComponent } from './atm/atm-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -116,6 +118,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AssignmentListComponent,
     ClassroomComponent,
     ClassroomListComponent,
+    AtmComponent,
+    AtmListComponent,
 
   ],
   imports: [

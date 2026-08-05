@@ -44,11 +44,13 @@ import { AssignmentListComponent } from './assignment/assignment-list.component'
 import { AssignmentComponent } from './assignment/assignment.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomListComponent } from './classroom/classroom-list.component';
+import { AtmComponent } from './atm/atm.component';
+import { AtmListComponent } from './atm/atm-list.component';
 
 
 
 const routes: Routes = [
-   {
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'dashboard'
@@ -57,12 +59,12 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   },
-   {
+  {
     path: 'changepassword',
     component: ChangepasswordComponent
   },
-   
-   {
+
+  {
     path: 'user',
     component: UserComponent
   },
@@ -166,7 +168,7 @@ const routes: Routes = [
     path: 'timetablelist',
     component: TimetableListComponent
   },
-   {
+  {
     path: 'forgotpassword',
     component: ForgotpasswordComponent
   },
@@ -182,19 +184,19 @@ const routes: Routes = [
     path: 'facultylist',
     component: FacultyListComponent
   },
-    {
+  {
     path: 'myprofile/:id',
     component: MyprofileComponent
   },
-   {
+  {
     path: 'getmarksheet',
     component: GetMarksheetComponent
   },
   {
     path: 'meritlist',
     component: MeritListComponent
-  },  
- {
+  },
+  {
     path: 'weather',
     component: WeatherComponent
   },
@@ -214,11 +216,11 @@ const routes: Routes = [
     path: 'dronelist',
     component: DroneListComponent,
   },
-   {
+  {
     path: 'drone/:id',
     component: DroneComponent
   },
-   {
+  {
     path: 'branch',
     component: BranchComponent,
   },
@@ -226,11 +228,11 @@ const routes: Routes = [
     path: 'branchlist',
     component: BranchListComponent,
   },
-   {
+  {
     path: 'branch/:id',
     component: BranchComponent
   },
-   {
+  {
     path: 'department',
     component: DepartmentComponent,
   },
@@ -238,11 +240,11 @@ const routes: Routes = [
     path: 'departmentlist',
     component: DepartmentListComponent,
   },
-   {
+  {
     path: 'department/:id',
     component: DepartmentComponent
   },
-   {
+  {
     path: 'fee',
     component: FeeComponent,
   },
@@ -250,7 +252,7 @@ const routes: Routes = [
     path: 'feelist',
     component: FeeListComponent,
   },
-   {
+  {
     path: 'fee/:id',
     component: FeeComponent
   },
@@ -262,7 +264,7 @@ const routes: Routes = [
     path: 'scholarshiplist',
     component: ScholarshipListComponent,
   },
-   {
+  {
     path: 'scholarship/:id',
     component: ScholarshipComponent
   },
@@ -274,7 +276,7 @@ const routes: Routes = [
     path: 'insurancelist',
     component: InsuranceListComponent,
   },
-   {
+  {
     path: 'insurance/:id',
     component: InsuranceComponent
   },
@@ -286,7 +288,7 @@ const routes: Routes = [
     path: 'assignmentlist',
     component: AssignmentListComponent,
   },
-   {
+  {
     path: 'assignment/:id',
     component: AssignmentComponent
   },
@@ -298,11 +300,24 @@ const routes: Routes = [
     path: 'classroomlist',
     component: ClassroomListComponent,
   },
-   {
+  {
     path: 'classroom/:id',
     component: ClassroomComponent
   },
-  
+  {
+    path: 'atm',
+    component: AtmComponent,
+    
+  },
+  {
+    path: 'atmlist',
+    component: AtmListComponent,
+  },
+  {
+    path: 'atm/:id',
+    component: AtmComponent
+  },
+
 
 ];
 
@@ -310,4 +325,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes, { useHash: true })],
+//   exports: [RouterModule]
+// })
 export class AppRoutingModule { }
