@@ -108,45 +108,37 @@
         </div>
 
         <!-- Search -->
-        <div class="row">
+        <div class="row justify-content-center align-items-center mb-4">
 
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-3">
-
+            <div class="col-md-3">
                 <input type="text" name="cardNumber" [(ngModel)]="form.searchParams.cardNumber"
                     placeholder="Enter Card Number" class="form-control">
-
             </div>
 
-            <div class="col-sm-3">
-
+            <div class="col-md-3">
                 <input type="text" name="cardholder" [(ngModel)]="form.searchParams.cardholder"
                     placeholder="Enter Card Holder" class="form-control">
-
             </div>
 
-            <div class="col-sm-2">
-
+            <div class="col-md-2">
                 <select class="form-control" name="cardType" [(ngModel)]="form.searchParams.cardType">
 
-                    <option value="undefined">---------Select Card Type---------</option>
+                    <option value="">---------Select Card Type---------</option>
                     <option value="Visa">Visa</option>
                     <option value="MasterCard">MasterCard</option>
                     <option value="RuPay">RuPay</option>
                     <option value="American Express">American Express</option>
 
                 </select>
-
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-md-2 text-center">
 
-                <input type="submit" (click)="search()" class="btn btn-primary btn-md" value="Search">
+                <input type="submit" (click)="search()" class="btn btn-primary" value="Search">
 
                 &nbsp;
 
-                <input type="submit" (click)="reset()" class="btn btn-dark btn-md" value="Reset">
+                <input type="submit" (click)="reset()" class="btn btn-dark" value="Reset">
 
             </div>
 
