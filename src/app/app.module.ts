@@ -63,6 +63,8 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomListComponent } from './classroom/classroom-list.component';
 import { AtmComponent } from './atm/atm.component';
 import { AtmListComponent } from './atm/atm-list.component';
+import { CreditcardComponent } from './creditcard/creditcard.component';
+import { CreditcardListComponent } from './creditcard/creditcard-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -120,6 +122,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ClassroomListComponent,
     AtmComponent,
     AtmListComponent,
+    CreditcardComponent,
+    CreditcardListComponent,
 
   ],
   imports: [

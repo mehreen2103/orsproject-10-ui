@@ -27,4 +27,5 @@ export class EndpointServiceService {
   public ASSIGNMENT = this.SERVER_URL + "/Assignment";
   public CLASSROOM = this.SERVER_URL + "/Classroom";
   public ATM = this.SERVER_URL + "/Atm";
+  public CREDITCARD = this.SERVER_URL + "/Creditcard";
 }
