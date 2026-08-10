@@ -65,6 +65,8 @@ import { AtmComponent } from './atm/atm.component';
 import { AtmListComponent } from './atm/atm-list.component';
 import { CreditcardComponent } from './creditcard/creditcard.component';
 import { CreditcardListComponent } from './creditcard/creditcard-list.component';
+import { VendorComponent } from './vendor/vendor.component';
+import { VendorListComponent } from './vendor/vendor-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -124,6 +126,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AtmListComponent,
     CreditcardComponent,
     CreditcardListComponent,
+    VendorComponent,
+    VendorListComponent,
 
   ],
   imports: [

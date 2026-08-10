@@ -48,6 +48,8 @@ import { AtmComponent } from './atm/atm.component';
 import { AtmListComponent } from './atm/atm-list.component';
 import { CreditcardComponent } from './creditcard/creditcard.component';
 import { CreditcardListComponent } from './creditcard/creditcard-list.component';
+import { VendorComponent } from './vendor/vendor.component';
+import { VendorListComponent } from './vendor/vendor-list.component';
 
 
 
@@ -333,15 +335,29 @@ const routes: Routes = [
     component: CreditcardComponent
   },
 
+   {
+    path: 'vendor',
+    component: VendorComponent,
+    
+  },
+  {
+    path: 'vendorlist',
+    component: VendorListComponent,
+  },
+  {
+    path: 'vendor/:id',
+    component: VendorComponent
+  },
+
 
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes, { useHash: true })],
+//   exports: [RouterModule]
+// })
 export class AppRoutingModule { }

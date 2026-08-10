@@ -1,0 +1,246 @@
+<style>
+    .atm-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .atm-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .atm-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .atm-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .atm-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="atm-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card atm-card">
+
+                    <div class="atm-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-store me-2"></i>
+                            Add Vendor
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-edit me-2"></i>
+                            Update Vendor
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            {{form.message}}
+                        </div>
+
+                        <!-- Vendor Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-store me-2"></i>
+                            Vendor Name <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-store"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="vendorName" [(ngModel)]="form.data.vendorName"
+                                placeholder="Enter Vendor Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.vendorName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Mobile No -->
+
+                        <label class="form-label">
+                            <i class="fas fa-mobile-alt me-2"></i>
+                            Mobile No <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-mobile-alt"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="mobileNo" [(ngModel)]="form.data.mobileNo"
+                                placeholder="Enter Mobile No">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.mobileNo}}
+                        </small>
+
+                        <br>
+
+                        <!-- Address -->
+
+                        <label class="form-label">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Address <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+
+                            <textarea class="form-control" name="address" [(ngModel)]="form.data.address"
+                                placeholder="Enter Address" rows="2" style="height:auto;"></textarea>
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.address}}
+                        </small>
+
+                        <br>
+
+                        <!-- Service Type -->
+
+                        <label class="form-label">
+                            <i class="fas fa-tools me-2"></i>
+                            Service Type <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-tools"></i>
+                            </span>
+
+                            <select class="form-control" name="serviceType" [(ngModel)]="form.data.serviceType">
+
+                                <option value="undefined">------Select Service Type------</option>
+                                <option value="Catering">Catering</option>
+                                <option value="Decoration">Decoration</option>
+                                <option value="Photography">Photography</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Other">Other</option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.serviceType}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i>
+                                Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/vendorlist')">
+                                <i class="fas fa-list me-2"></i>
+                                List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-footer></app-footer>
