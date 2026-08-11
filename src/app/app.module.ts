@@ -67,6 +67,8 @@ import { CreditcardComponent } from './creditcard/creditcard.component';
 import { CreditcardListComponent } from './creditcard/creditcard-list.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { VendorListComponent } from './vendor/vendor-list.component';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { ComplaintListComponent } from './complaint/complaint-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -128,6 +130,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreditcardListComponent,
     VendorComponent,
     VendorListComponent,
+    ComplaintComponent,
+    ComplaintListComponent,
 
   ],
   imports: [

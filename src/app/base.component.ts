@@ -98,7 +98,9 @@ export class BaseCtl implements OnInit {
     fileToUpload: any = null;
 
     onFileSelect(event: any) {
+
         this.fileToUpload = event.target.files.item(0);
+        
         console.log('file', this.fileToUpload);
     }
 

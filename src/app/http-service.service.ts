@@ -28,7 +28,6 @@ export class HttpServiceService {
 
       callback(data);
     }, (error) => {
-
       this.handleError(error, callback);
     });
   }
@@ -48,5 +47,4 @@ export class HttpServiceService {
   });
     }
   }
-  
   }

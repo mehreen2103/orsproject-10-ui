@@ -50,6 +50,8 @@ import { CreditcardComponent } from './creditcard/creditcard.component';
 import { CreditcardListComponent } from './creditcard/creditcard-list.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { VendorListComponent } from './vendor/vendor-list.component';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { ComplaintListComponent } from './complaint/complaint-list.component';
 
 
 
@@ -347,6 +349,19 @@ const routes: Routes = [
   {
     path: 'vendor/:id',
     component: VendorComponent
+  },
+ {
+    path: 'complaint',
+    component: ComplaintComponent,
+    
+  },
+  {
+    path: 'complaintlist',
+    component: ComplaintListComponent,
+  },
+  {
+    path: 'complaint/:id',
+    component: ComplaintComponent
   },
 
 

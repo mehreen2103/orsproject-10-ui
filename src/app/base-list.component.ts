@@ -46,6 +46,7 @@ export class BaseListCtl extends BaseCtl {
     }
 
     override deleteMany() {
+        
         this.form.error = false;
         this.deleteRecordList = [];
 
