@@ -90,13 +90,13 @@
                     <div class="atm-header">
 
                         <h2 *ngIf="!form.data.id">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            Add Complaint
+                            <i class="fas fa-book me-2"></i>
+                            Add Library
                         </h2>
 
                         <h2 *ngIf="form.data.id > 0">
                             <i class="fas fa-edit me-2"></i>
-                            Update Complaint
+                            Update Library
                         </h2>
 
                     </div>
@@ -111,112 +111,97 @@
                             {{form.message}}
                         </div>
 
-                        <!-- Complaint Type -->
+                        <!-- Library Name -->
 
                         <label class="form-label">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            Complaint Type <span class="text-danger">*</span>
+                            <i class="fas fa-book me-2"></i>
+                            Library Name <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-exclamation-circle"></i>
+                                <i class="fas fa-book"></i>
                             </span>
 
-                            <select class="form-control" name="complaintType" [(ngModel)]="form.data.complaintType">
-
-                                <option value="undefined">------Select Complaint Type------</option>
-                                <option value="Service">Service</option>
-                                <option value="Product">Product</option>
-                                <option value="Billing">Billing</option>
-                                <option value="Staff Behavior">Staff Behavior</option>
-                                <option value="Other">Other</option>
-
-                            </select>
+                            <input type="text" class="form-control" name="libraryName"
+                                [(ngModel)]="form.data.libraryName" placeholder="Enter Library Name">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.complaintType}}
+                            {{form.inputerror.libraryName}}
                         </small>
 
                         <br>
 
-                        <!-- Description -->
+                        <!-- Address -->
 
                         <label class="form-label">
-                            <i class="fas fa-align-left me-2"></i>
-                            Description <span class="text-danger">*</span>
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Address <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-align-left"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </span>
 
-                            <textarea class="form-control" name="description" [(ngModel)]="form.data.description"
-                                placeholder="Enter Description" rows="2" style="height:auto;"></textarea>
+                            <textarea class="form-control" name="address" [(ngModel)]="form.data.address"
+                                placeholder="Enter Address" rows="2" style="height:auto;"></textarea>
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.description}}
+                            {{form.inputerror.address}}
                         </small>
 
                         <br>
 
-                        <!-- Complaint Date -->
+                        <!-- Total Books -->
 
                         <label class="form-label">
-                            <i class="fas fa-calendar-alt me-2"></i>
-                            Complaint Date <span class="text-danger">*</span>
+                            <i class="fas fa-book-open me-2"></i>
+                            Total Books <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-calendar-alt"></i>
+                                <i class="fas fa-book-open"></i>
                             </span>
 
-                            <input type="date" class="form-control" name="complaintDate"
-                                [(ngModel)]="form.data.complaintDate" placeholder="Enter Complaint Date">
+                            <input type="text" class="form-control" name="totalBooks" [(ngModel)]="form.data.totalBooks"
+                                placeholder="Enter Total Books">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.complaintDate}}
+                            {{form.inputerror.totalBooks}}
                         </small>
 
                         <br>
 
-                        <!-- Status -->
+                        <!-- Contact No -->
 
                         <label class="form-label">
-                            <i class="fas fa-info-circle me-2"></i>
-                            Status <span class="text-danger">*</span>
+                            <i class="fas fa-phone-alt me-2"></i>
+                            Contact No <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-info-circle"></i>
+                                <i class="fas fa-phone-alt"></i>
                             </span>
 
-                            <select class="form-control" name="status" [(ngModel)]="form.data.status">
-
-                                <option value="undefined">-------------------Select Status-------------------</option>
-                                <option value="Pending">Pending</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Resolved">Resolved</option>
-                                <option value="Rejected">Rejected</option>
-
-                            </select>
+                            <input type="text" class="form-control" name="contactNo" [(ngModel)]="form.data.contactNo"
+                                placeholder="Enter Contact No">
 
                         </div>
 
-                        <small class="text-danger"> {{form.inputerror.status}} </small>
+                        <small class="text-danger"> {{form.inputerror.contactNo}} </small>
 
                         <hr class="my-4">
 
@@ -229,7 +214,7 @@
 
                             &nbsp;&nbsp;
 
-                            <button class="btn btn-primary btn-lg" (click)="forward('/complaintlist')">
+                            <button class="btn btn-primary btn-lg" (click)="forward('/librarylist')">
                                 <i class="fas fa-list me-2"></i>
                                 List
                             </button>

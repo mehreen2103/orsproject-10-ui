@@ -30,4 +30,5 @@ export class EndpointServiceService {
   public CREDITCARD = this.SERVER_URL + "/Creditcard";
   public VENDOR = this.SERVER_URL + "/Vendor";
   public COMPLAINT = this.SERVER_URL + "/Complaint";
+  public LIBRARY = this.SERVER_URL + "/Library";
 }

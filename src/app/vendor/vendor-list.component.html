@@ -124,9 +124,13 @@
 
                 <select name="serviceType" [(ngModel)]="form.searchParams.serviceType" class="form-control">
 
-                    <option value="undefined">
-                        ------------Select------------
-                    </option>
+                    <option value="undefined">------Select Service Type------</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Decoration">Decoration</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Other">Other</option>
+
 
                     <option *ngFor="let obj of form.preload.serviceTypeList" [value]="obj.key">
 

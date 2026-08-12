@@ -52,6 +52,8 @@ import { VendorComponent } from './vendor/vendor.component';
 import { VendorListComponent } from './vendor/vendor-list.component';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { ComplaintListComponent } from './complaint/complaint-list.component';
+import { LibraryComponent } from './library/library.component';
+import { LibraryListComponent } from './library/library-list.component';
 
 
 
@@ -364,15 +366,28 @@ const routes: Routes = [
     component: ComplaintComponent
   },
 
+   {
+    path: 'library',
+    component: LibraryComponent,
+  },
+  {
+    path: 'librarylist',
+    component: LibraryListComponent,
+  },
+  {
+    path: 'library/:id',
+    component: LibraryComponent
+  },
+
 
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
 // @NgModule({
-//   imports: [RouterModule.forRoot(routes, { useHash: true })],
+//   imports: [RouterModule.forRoot(routes)],
 //   exports: [RouterModule]
 // })
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
+})
 export class AppRoutingModule { }
