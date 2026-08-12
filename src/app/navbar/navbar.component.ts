@@ -62,8 +62,11 @@ openJavadoc() {
     _self.router.navigate(['/login'], {
 
       queryParams: {
-        successMessage: 'Logout Successfully'
-      }
+              errorMessage: 'Your Token is expired... plz login again..!!',
+            },
+      // queryParams: {
+      //   successMessage: 'Logout Successfully'
+      // }
     });
 
   });
