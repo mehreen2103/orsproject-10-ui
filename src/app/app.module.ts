@@ -71,6 +71,8 @@ import { ComplaintComponent } from './complaint/complaint.component';
 import { ComplaintListComponent } from './complaint/complaint-list.component';
 import { LibraryComponent } from './library/library.component';
 import { LibraryListComponent } from './library/library-list.component';
+import { PaymentComponent } from './payment/payment.component';
+import { PaymentListComponent } from './payment/payment-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -136,6 +138,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ComplaintListComponent,
     LibraryComponent,
     LibraryListComponent,
+    PaymentComponent,
+    PaymentListComponent,
 
   ],
   imports: [

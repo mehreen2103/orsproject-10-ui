@@ -54,6 +54,8 @@ import { ComplaintComponent } from './complaint/complaint.component';
 import { ComplaintListComponent } from './complaint/complaint-list.component';
 import { LibraryComponent } from './library/library.component';
 import { LibraryListComponent } from './library/library-list.component';
+import { PaymentComponent } from './payment/payment.component';
+import { PaymentListComponent } from './payment/payment-list.component';
 
 
 
@@ -377,6 +379,18 @@ const routes: Routes = [
   {
     path: 'library/:id',
     component: LibraryComponent
+  },
+   {
+    path: 'payment',
+    component: PaymentComponent,
+  },
+  {
+    path: 'paymentlist',
+    component: PaymentListComponent,
+  },
+  {
+    path: 'payment/:id',
+    component: PaymentComponent
   },
 
 

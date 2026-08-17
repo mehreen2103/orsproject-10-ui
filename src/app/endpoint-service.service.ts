@@ -31,4 +31,5 @@ export class EndpointServiceService {
   public VENDOR = this.SERVER_URL + "/Vendor";
   public COMPLAINT = this.SERVER_URL + "/Complaint";
   public LIBRARY = this.SERVER_URL + "/Library";
+  public PAYMENT = this.SERVER_URL + "/Payment";
 }

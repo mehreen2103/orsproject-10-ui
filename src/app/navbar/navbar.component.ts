@@ -19,15 +19,18 @@ export class NavbarComponent {
     data: {}
   }
   toggleCollapsed() {
+
     this.isCollapsed = !this.isCollapsed;
   }
 
    constructor(private translate: TranslateService, private httpService: HttpServiceService, private router: Router, private servicelocator: ServiceLocatorService) {
+
     const locale = localStorage.getItem("locale") || 'en';
     translate.setDefaultLang(locale);
     translate.use(locale);
   }
    changeLocale(locale: string) {
+
     localStorage.setItem("locale", locale);
     this.translate.use(locale);
   }
