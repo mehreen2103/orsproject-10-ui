@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpServiceService } from './http-service.service';
 import { EndpointServiceService } from './endpoint-service.service';
 import { ServiceLocatorService } from './service-locator.service';
-
 import { FormsModule } from '@angular/forms';
 ;
 import { NavbarComponent } from './navbar/navbar.component';
-
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user/user-list.component';
 import { RoleComponent } from './role/role.component';
@@ -73,6 +69,8 @@ import { LibraryComponent } from './library/library.component';
 import { LibraryListComponent } from './library/library-list.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentListComponent } from './payment/payment-list.component';
+import { BookComponent } from './book/book.component';
+import { BookListComponent } from './book/book-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -140,7 +138,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LibraryListComponent,
     PaymentComponent,
     PaymentListComponent,
-
+    BookComponent,
+    BookListComponent,
   ],
   imports: [
     BrowserModule,

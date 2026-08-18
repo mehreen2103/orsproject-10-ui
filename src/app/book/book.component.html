@@ -90,13 +90,13 @@
                     <div class="atm-header">
 
                         <h2 *ngIf="!form.data.id">
-                            <i class="fas fa-money-bill-wave me-2"></i>
-                            Add Payment
+                            <i class="fas fa-book me-2"></i>
+                            Add Book
                         </h2>
 
                         <h2 *ngIf="form.data.id > 0">
                             <i class="fas fa-edit me-2"></i>
-                            Update Payment
+                            Update Book
                         </h2>
 
                     </div>
@@ -113,11 +113,59 @@
                             {{form.message}}
                         </div>
 
-                        <!-- Amount -->
+                        <!-- Title -->
+
+                        <label class="form-label">
+                            <i class="fas fa-book me-2"></i>
+                            Title <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-book"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="title" [(ngModel)]="form.data.title"
+                                placeholder="Enter Title">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.title}}
+                        </small>
+
+                        <br>
+
+                        <!-- Author -->
+
+                        <label class="form-label">
+                            <i class="fas fa-user-edit me-2"></i>
+                            Author <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-user-edit"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="author" [(ngModel)]="form.data.author"
+                                placeholder="Enter Author">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.author}}
+                        </small>
+
+                        <br>
+
+                        <!-- Price -->
 
                         <label class="form-label">
                             <i class="fas fa-rupee-sign me-2"></i>
-                            Amount <span class="text-danger">*</span>
+                            Price <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
@@ -126,22 +174,22 @@
                                 <i class="fas fa-rupee-sign"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="amount" [(ngModel)]="form.data.amount"
-                                placeholder="Enter Amount">
+                            <input type="text" class="form-control" name="price" [(ngModel)]="form.data.price"
+                                placeholder="Enter Price">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.amount}}
+                            {{form.inputerror.price}}
                         </small>
 
                         <br>
 
-                        <!-- Payment Date -->
+                        <!-- Publication Year -->
 
                         <label class="form-label">
                             <i class="fas fa-calendar-alt me-2"></i>
-                            Payment Date <span class="text-danger">*</span>
+                            Publication Year <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
@@ -150,69 +198,12 @@
                                 <i class="fas fa-calendar-alt"></i>
                             </span>
 
-                            <input type="date" class="form-control" name="paymentDate"
-                                [(ngModel)]="form.data.paymentDate" placeholder="Enter Payment Date">
+                            <input type="text" class="form-control" name="publicationYear"
+                                [(ngModel)]="form.data.publicationYear" placeholder="Enter Publication Year">
 
                         </div>
 
-                        <small class="text-danger">
-                            {{form.inputerror.paymentDate}}
-                        </small>
-
-                        <br>
-
-                        <!-- Payment Method -->
-
-                        <!-- Payment Method -->
-
-                        <label class="form-label">
-                            <i class="fas fa-credit-card me-2"></i>
-                            Payment Method <span class="text-danger">*</span>
-                        </label>
-
-                        <div class="input-group mb-2">
-
-                            <span class="input-group-text">
-                                <i class="fas fa-credit-card"></i>
-                            </span>
-
-                            <select class="form-control" name="paymentMethod" [(ngModel)]="form.data.paymentMethod">
-                                <option value="undefined">-- Select Payment Method --</option>
-                                <option value="Cash">Cash</option>
-                                <option value="Credit Card">Credit Card</option>
-                                <option value="Debit Card">Debit Card</option>
-                                <option value="UPI">UPI</option>
-                                <option value="Net Banking">Net Banking</option>
-                                <option value="Wallet">Wallet</option>
-                            </select>
-
-                        </div>
-
-                        <small class="text-danger">
-                            {{form.inputerror.paymentMethod}}
-                        </small>
-
-                        <br>
-
-                        <!-- Transaction Id -->
-
-                        <label class="form-label">
-                            <i class="fas fa-hashtag me-2"></i>
-                            Transaction Id <span class="text-danger">*</span>
-                        </label>
-
-                        <div class="input-group mb-2">
-
-                            <span class="input-group-text">
-                                <i class="fas fa-hashtag"></i>
-                            </span>
-
-                            <input type="text" class="form-control" name="transactionId"
-                                [(ngModel)]="form.data.transactionId" placeholder="Enter Transaction Id">
-
-                        </div>
-
-                        <small class="text-danger"> {{form.inputerror.transactionId}} </small>
+                        <small class="text-danger"> {{form.inputerror.publicationYear}} </small>
 
                         <hr class="my-4">
 
@@ -225,7 +216,7 @@
 
                             &nbsp;&nbsp;
 
-                            <button class="btn btn-primary btn-lg" (click)="forward('/paymentlist')">
+                            <button class="btn btn-primary btn-lg" (click)="forward('/booklist')">
                                 <i class="fas fa-list me-2"></i>
                                 List
                             </button>

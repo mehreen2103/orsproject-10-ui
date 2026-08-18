@@ -56,6 +56,8 @@ import { LibraryComponent } from './library/library.component';
 import { LibraryListComponent } from './library/library-list.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentListComponent } from './payment/payment-list.component';
+import { BookComponent } from './book/book.component';
+import { BookListComponent } from './book/book-list.component';
 
 
 
@@ -391,6 +393,19 @@ const routes: Routes = [
   {
     path: 'payment/:id',
     component: PaymentComponent
+  },
+
+   {
+    path: 'book',
+    component: BookComponent,
+  },
+  {
+    path: 'booklist',
+    component: BookListComponent,
+  },
+  {
+    path: 'book/:id',
+    component: BookComponent
   },
 
 

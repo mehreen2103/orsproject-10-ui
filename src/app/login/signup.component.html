@@ -1,229 +1,313 @@
-<style type="text/css">
-  .input-group-addon {
-    box-shadow: 9px 8px 7px #001a33;
-  }
+<style>
+    .atm-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
 
-  .hm {
-    background-image: url('assets/files/add.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    padding-top: 5px;
-    padding-bottom: 25px;
-  }
+    .atm-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .atm-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .atm-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .atm-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-warning {
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
 </style>
 
 <app-navbar></app-navbar>
-<br><br><br>
-<div class="hm">
-  <main>
-    <div class="row pt-3">
 
-      <div class="col-md-2"></div>
+<div class="atm-bg">
 
-      <div class="col-md-8 mb-4">
-        <div class="card input-group-addon">
-          <div class="card-body">
+    <div class="container">
 
-            <h3 class="text-center text-dark">User Registration</h3>
+        <div class="row justify-content-center">
 
-            <div>
-              <h4 align="center">
-                <div *ngIf="form.message && !form.error" class="alert alert-success alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  {{ form.message }}
+            <div class="col-lg-8">
+
+                <div class="card atm-card">
+
+                    <div class="atm-header">
+                        <h2>
+                            <i class="fas fa-user-plus me-2"></i>
+                            User Registration
+                        </h2>
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="form.message && !form.error" class="alert alert-success text-center">
+                            {{ form.message }}
+                        </div>
+
+                        <div *ngIf="form.message && form.error" class="alert alert-danger text-center">
+                            {{ form.message }}
+                        </div>
+
+                        <form (ngSubmit)="signUp()" #registerForm="ngForm">
+
+                            <!-- First Name & Last Name -->
+                            <div class="row">
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-user me-2"></i>
+                                        First Name <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="firstName"
+                                            [(ngModel)]="form.data.firstName" placeholder="Enter First Name" required>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.firstName }}</small>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-user me-2"></i>
+                                        Last Name <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="lastName"
+                                            [(ngModel)]="form.data.lastName" placeholder="Enter Last Name" required>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.lastName }}</small>
+
+                                </div>
+
+                            </div>
+
+                            <br>
+
+                            <!-- Login ID & Password -->
+                            <div class="row">
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-envelope me-2"></i>
+                                        Login Id <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="loginId"
+                                            [(ngModel)]="form.data.loginId" placeholder="Enter Login ID" required>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.loginId }}</small>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-lock me-2"></i>
+                                        Password <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" name="password"
+                                            [(ngModel)]="form.data.password" placeholder="Enter Password" required>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.password }}</small>
+
+                                </div>
+
+                            </div>
+
+                            <br>
+
+                            <!-- DOB & Gender -->
+                            <div class="row">
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-calendar-alt me-2"></i>
+                                        Date of Birth <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                        <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob"
+                                            required>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.dob }}</small>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-venus-mars me-2"></i>
+                                        Gender <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-venus-mars"></i>
+                                        </span>
+                                        <select class="form-control" name="gender" [(ngModel)]="form.data.gender"
+                                            required>
+                                            <option value="undefined">------------Select------------</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.gender }}</small>
+
+                                </div>
+
+                            </div>
+
+                            <br>
+
+                            <!-- Mobile -->
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    <label class="form-label">
+                                        <i class="fas fa-phone me-2"></i>
+                                        Mobile <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-phone"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="phone"
+                                            [(ngModel)]="form.data.phone" maxlength="10"
+                                            placeholder="Enter Mobile No." required>
+                                    </div>
+
+                                    <small class="text-danger">{{ form.inputerror.phone }}</small>
+
+                                </div>
+
+                            </div>
+
+                            <hr class="my-4">
+
+                            <!-- Buttons -->
+                            <div class="text-center">
+
+                                <button type="submit" class="btn btn-success btn-lg me-3">
+                                    <i class="fas fa-user-plus me-2"></i>
+                                    Sign Up
+                                </button>
+
+                                &nbsp;&nbsp;
+
+                                <button type="button" class="btn btn-warning btn-lg" (click)="reset()">
+                                    <i class="fas fa-redo me-2"></i>
+                                    Reset
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
                 </div>
-              </h4>
 
-              <h4 align="center">
-                <div *ngIf="form.message && form.error" class="alert alert-danger alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  {{ form.message }}
-                </div>
-              </h4>
             </div>
 
-            <form (ngSubmit)="signUp()" #registerForm="ngForm">
-
-              <!-- First Name & Last Name -->
-              <div class="row">
-
-                <div class="col-md-6">
-                  <label><b>First Name</b><span style="color:red">*</span></label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-user"></i>
-                      </div>
-                    </div>
-
-                    <input type="text" class="form-control" name="firstName" [(ngModel)]="form.data.firstName"
-                      placeholder="Enter First Name" required>
-                  </div>
-
-                  <font color="red">{{form.inputerror.firstName}}</font>
-                </div>
-
-                <div class="col-md-6">
-                  <label><b>Last Name</b><span style="color:red">*</span></label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-user"></i>
-                      </div>
-                    </div>
-
-                    <input type="text" class="form-control" name="lastName" [(ngModel)]="form.data.lastName"
-                      placeholder="Enter Last Name" required>
-                  </div>
-
-                  <font color="red">{{form.inputerror.lastName}}</font>
-                </div>
-
-              </div>
-
-              <br>
-
-              <!-- Login ID & Password -->
-              <div class="row">
-
-                <div class="col-md-6">
-                  <label><b>Login Id</b><span style="color:red">*</span></label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-envelope"></i>
-                      </div>
-                    </div>
-
-                    <input type="text" class="form-control" name="loginId" [(ngModel)]="form.data.loginId"
-                      placeholder="Enter Login ID" required>
-                  </div>
-
-                  <font color="red">{{form.inputerror.loginId}}</font>
-                </div>
-
-                <div class="col-md-6">
-                  <label><b>Password</b><span style="color:red">*</span></label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-lock"></i>
-                      </div>
-                    </div>
-
-                    <input type="password" class="form-control" name="password" [(ngModel)]="form.data.password"
-                      placeholder="Enter Password" required>
-                  </div>
-
-                  <font color="red">{{form.inputerror.password}}</font>
-                </div>
-
-              </div>
-
-              <br>
-
-              <!-- DOB & Gender -->
-              <div class="row">
-
-                <div class="col-md-6">
-                  <label><b>Date of Birth</b><span style="color:red">*</span></label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-calendar-alt"></i>
-                      </div>
-                    </div>
-
-                    <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob" required>
-                  </div>
-
-                  <font color="red">{{form.inputerror.dob}}</font>
-                </div>
-
-                <div class="col-md-6">
-                  <label><b>Gender</b><span style="color:red">*</span></label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-venus-mars"></i>
-                      </div>
-                    </div>
-
-                    <select class="form-control" name="gender" [(ngModel)]="form.data.gender" required>
-
-                      <option value="undefined">------------Select------------</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-
-                    </select>
-                  </div>
-
-                  <font color="red">{{form.inputerror.gender}}</font>
-                </div>
-
-              </div>
-
-              <br>
-
-              <!-- Mobile -->
-              <div class="row">
-
-                <div class="col-md-12">
-
-                  <label><b>Mobile</b><span style="color:red">*</span></label>
-
-                  <div class="input-group">
-
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-phone"></i>
-                      </div>
-                    </div>
-
-                    <input type="text" class="form-control" name="phone" [(ngModel)]="form.data.phone" maxlength="10"
-                      placeholder="Enter Mobile No." required>
-
-                  </div>
-
-                  <font color="red">{{form.inputerror.phone}}</font>
-
-                </div>
-
-              </div>
-
-              <br>
-
-              <!-- Buttons -->
-              <div class="text-center">
-
-                <button type="submit" class="btn btn-success btn-md">
-                  Sign Up
-                </button>
-
-                &nbsp;
-
-                <button type="button" class="btn btn-warning btn-md" (click)="reset()">
-                  Reset
-                </button>
-
-              </div>
-
-            </form>
-
-          </div>
         </div>
-      </div>
-
-      <div class="col-md-2"></div>
 
     </div>
-  </main>
+
 </div>
+
+<br>
 
 <app-footer></app-footer>
