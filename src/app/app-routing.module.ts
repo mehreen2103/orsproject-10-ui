@@ -58,6 +58,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentListComponent } from './payment/payment-list.component';
 import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list.component';
+import { PatientListComponent } from './patient/patient-list.component';
+import { PatientComponent } from './patient/patient.component';
 
 
 
@@ -407,16 +409,29 @@ const routes: Routes = [
     path: 'book/:id',
     component: BookComponent
   },
+  
+   {
+    path: 'patient',
+    component: PatientComponent,
+  },
+  {
+    path: 'patientlist',
+    component: PatientListComponent,
+  },
+  {
+    path: 'patient/:id',
+    component: PatientComponent
+  },
 
 
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes, { useHash: true })],
+//   exports: [RouterModule]
+// })
 export class AppRoutingModule { }

@@ -90,11 +90,11 @@
                     <div class="atm-header">
 
                         <h2 *ngIf="!form.data.id">
-                            <i class="fas fa-book me-2"></i> Add Book
+                            <i class="fas fa-user-injured me-2"></i> Add Patient
                         </h2>
 
                         <h2 *ngIf="form.data.id > 0">
-                            <i class="fas fa-edit me-2"></i> Update Book
+                            <i class="fas fa-edit me-2"></i> Update Patient
                         </h2>
 
                     </div>
@@ -111,97 +111,99 @@
                             {{form.message}}
                         </div>
 
-                        <!-- Title -->
+                        <!-- Patient Name -->
 
                         <label class="form-label">
-                            <i class="fas fa-book me-2"></i>
-                            Title <span class="text-danger">*</span>
+                            <i class="fas fa-user me-2"></i>
+                            Patient Name <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-book"></i>
+                                <i class="fas fa-user"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="title" [(ngModel)]="form.data.title"
-                                placeholder="Enter Title">
+                            <input type="text" class="form-control" name="patientName"
+                                [(ngModel)]="form.data.patientName" placeholder="Enter Patient Name">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.title}}
+                            {{form.inputerror.patientName}}
                         </small>
 
                         <br>
 
-                        <!-- Author -->
+                        <!-- Disease -->
 
                         <label class="form-label">
-                            <i class="fas fa-user-edit me-2"></i>
-                            Author <span class="text-danger">*</span>
+                            <i class="fas fa-virus me-2"></i>
+                            Disease <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-user-edit"></i>
+                                <i class="fas fa-virus"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="author" [(ngModel)]="form.data.author"
-                                placeholder="Enter Author">
+                            <input type="text" class="form-control" name="disease" [(ngModel)]="form.data.disease"
+                                placeholder="Enter Disease">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.author}}
+                            {{form.inputerror.disease}}
                         </small>
 
                         <br>
 
-                        <!-- Price -->
+                        <!-- Doctor Name -->
 
                         <label class="form-label">
-                            <i class="fas fa-rupee-sign me-2"></i>
-                            Price <span class="text-danger">*</span>
+                            <i class="fas fa-user-md me-2"></i>
+                            Doctor Name <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-rupee-sign"></i>
+                                <i class="fas fa-user-md"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="price" [(ngModel)]="form.data.price"
-                                placeholder="Enter Price">
+                            <input type="text" class="form-control" name="doctorName" [(ngModel)]="form.data.doctorName"
+                                placeholder="Enter Doctor Name">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.price}}
+                            {{form.inputerror.doctorName}}
                         </small>
 
                         <br>
 
-                        <!-- Publication Year -->
+                        <!-- Admission Date -->
 
                         <label class="form-label">
-                            <i class="fas fa-calendar-alt me-2"></i>
-                            Publication Year <span class="text-danger">*</span>
+                            <i class="fas fa-calendar-check me-2"></i>
+                            Admission Date <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-calendar-alt"></i>
+                                <i class="fas fa-calendar-check"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="publicationYear"
-                                [(ngModel)]="form.data.publicationYear" placeholder="Enter Publication Year">
+                            <input type="date" class="form-control" name="admissionDate"
+                                [(ngModel)]="form.data.admissionDate">
 
                         </div>
 
-                        <small class="text-danger"> {{form.inputerror.publicationYear}} </small>
+                        <small class="text-danger">
+                            {{form.inputerror.admissionDate}}
+                        </small>
 
                         <hr class="my-4">
 
@@ -214,7 +216,7 @@
 
                             &nbsp;&nbsp;
 
-                            <button class="btn btn-primary btn-lg" (click)="forward('/booklist')">
+                            <button class="btn btn-primary btn-lg" (click)="forward('/patientlist')">
                                 <i class="fas fa-list me-2"></i>
                                 List
                             </button>

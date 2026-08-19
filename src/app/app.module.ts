@@ -71,6 +71,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentListComponent } from './payment/payment-list.component';
 import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list.component';
+import { PatientComponent } from './patient/patient.component';
+import { PatientListComponent } from './patient/patient-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -140,6 +142,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PaymentListComponent,
     BookComponent,
     BookListComponent,
+    PatientComponent,
+    PatientListComponent,
   ],
   imports: [
     BrowserModule,
@@ -156,7 +160,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthService,
+      multi: true
     },
     HttpServiceService,
     EndpointServiceService,
