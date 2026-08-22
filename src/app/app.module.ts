@@ -73,6 +73,8 @@ import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list.component';
 import { PatientComponent } from './patient/patient.component';
 import { PatientListComponent } from './patient/patient-list.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { HotelListComponent } from './hotel/hotel-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -144,6 +146,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BookListComponent,
     PatientComponent,
     PatientListComponent,
+    HotelComponent,
+    HotelListComponent,
   ],
   imports: [
     BrowserModule,

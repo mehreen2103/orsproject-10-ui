@@ -51,7 +51,7 @@
     <ng-container *ngIf="form.list.length > 0">
 
         <div align="center">
-            <h1 style="color:#2F4156;"><b>Patient List</b></h1>
+            <h1 style="color:#2F4156;"><b>Hotel List</b></h1>
         </div>
 
         <br>
@@ -108,22 +108,28 @@
 
             <div class="col-sm-2">
 
-                <input type="text" name="patientName" [(ngModel)]="form.searchParams.patientName"
-                    placeholder="Enter Patient Name" class="form-control">
+                <input type="text" name="hotelName" [(ngModel)]="form.searchParams.hotelName"
+                    placeholder="Enter Hotel Name" class="form-control">
 
             </div>
 
             <div class="col-sm-2">
 
-                <input type="text" name="disease" [(ngModel)]="form.searchParams.disease" placeholder="Enter Disease"
+                <input type="text" name="location" [(ngModel)]="form.searchParams.location" placeholder="Enter Location"
                     class="form-control">
 
             </div>
 
             <div class="col-sm-2">
 
-                <input type="text" name="doctorName" [(ngModel)]="form.searchParams.doctorName"
-                    placeholder="Enter Doctor Name" class="form-control">
+                <select name="rating" [(ngModel)]="form.searchParams.rating" class="form-control">
+                    <option value="undefined">Select Rating</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Star</option>
+                    <option value="3">3 Star</option>
+                    <option value="4">4 Star</option>
+                    <option value="5">5 Star</option>
+                </select>
 
             </div>
 
@@ -158,13 +164,13 @@
 
                         <th>S.NO</th>
 
-                        <th>Patient Name</th>
+                        <th>Hotel Name</th>
 
-                        <th>Disease</th>
+                        <th>Location</th>
 
-                        <th>Doctor Name</th>
+                        <th>Rating</th>
 
-                        <th>Admission Date</th>
+                        <th>Contact No</th>
 
                         <th>Edit</th>
 
@@ -185,17 +191,17 @@
 
                         <td>{{(form.pageNo * 5)+i+1}}</td>
 
-                        <td>{{m.patientName}}</td>
+                        <td>{{m.hotelName}}</td>
 
-                        <td>{{m.disease}}</td>
+                        <td>{{m.location}}</td>
 
-                        <td>{{m.doctorName}}</td>
+                        <td>{{m.rating}}</td>
 
-                        <td>{{m.admissionDate}}</td>
+                        <td>{{m.contactNo}}</td>
 
                         <td>
 
-                            <a (click)="forward('/patient/'+m.id)" style="cursor:pointer;"> Edit </a>
+                            <a (click)="forward('/hotel/'+m.id)" style="cursor:pointer;"> Edit </a>
 
                         </td>
 
@@ -224,7 +230,7 @@
 
                     <td align="center">
 
-                        <input type="submit" (click)="forward('/patient')" class="btn btn-primary btn-md"
+                        <input type="submit" (click)="forward('/hotel')" class="btn btn-primary btn-md"
                             style="font-size:17px" value="New">
 
                     </td>
@@ -257,7 +263,7 @@
 
         <div align="center">
 
-            <h1 style="font-size:40px;color:#162390;">Patient List</h1>
+            <h1 style="font-size:40px;color:#162390;">Hotel List</h1>
 
         </div>
 
@@ -287,7 +293,7 @@
 
         <div style="padding-left:48%;">
 
-            <input type="submit" (click)="forward('/patient')" class="btn btn-primary btn-md" style="font-size:17px"
+            <input type="submit" (click)="forward('/hotel')" class="btn btn-primary btn-md" style="font-size:17px"
                 value="Back">
 
         </div>

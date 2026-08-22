@@ -90,11 +90,11 @@
                     <div class="atm-header">
 
                         <h2 *ngIf="!form.data.id">
-                            <i class="fas fa-user-injured me-2"></i> Add Patient
+                            <i class="fas fa-hotel me-2"></i> Add Hotel
                         </h2>
 
                         <h2 *ngIf="form.data.id > 0">
-                            <i class="fas fa-edit me-2"></i> Update Patient
+                            <i class="fas fa-edit me-2"></i> Update Hotel
                         </h2>
 
                     </div>
@@ -111,93 +111,99 @@
                             {{form.message}}
                         </div>
 
-                        <!-- Patient Name -->
+                        <!-- Hotel Name -->
 
                         <label class="form-label">
-                            <i class="fas fa-user me-2"></i> Patient Name <span class="text-danger">*</span>
+                            <i class="fas fa-hotel me-2"></i> Hotel Name <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-hotel"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="patientName"
-                                [(ngModel)]="form.data.patientName" placeholder="Enter Patient Name">
+                            <input type="text" class="form-control" name="hotelName" [(ngModel)]="form.data.hotelName"
+                                placeholder="Enter Hotel Name">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.patientName}}
+                            {{form.inputerror.hotelName}}
                         </small>
 
                         <br>
 
-                        <!-- Disease -->
+                        <!-- Location -->
 
                         <label class="form-label">
-                            <i class="fas fa-virus me-2"></i>Disease <span class="text-danger">*</span>
+                            <i class="fas fa-map-marker-alt me-2"></i>Location <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-virus"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="disease" [(ngModel)]="form.data.disease"
-                                placeholder="Enter Disease">
+                            <input type="text" class="form-control" name="location" [(ngModel)]="form.data.location"
+                                placeholder="Enter Location">
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.disease}}
+                            {{form.inputerror.location}}
                         </small>
 
                         <br>
 
-                        <!-- Doctor Name -->
+                        <!-- Rating -->
 
                         <label class="form-label">
-                            <i class="fas fa-user-md me-2"></i> Doctor Name <span class="text-danger">*</span>
+                            <i class="fas fa-star me-2"></i> Rating <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-user-md"></i>
+                                <i class="fas fa-star"></i>
                             </span>
 
-                            <input type="text" class="form-control" name="doctorName" [(ngModel)]="form.data.doctorName"
-                                placeholder="Enter Doctor Name">
+                            <select class="form-control" name="rating" [(ngModel)]="form.data.rating">
+                                <option value="undefined">-------------Select Rating-----------------</option>
+                                <option value="1">1 Star</option>
+                                <option value="2">2 Star</option>
+                                <option value="3">3 Star</option>
+                                <option value="4">4 Star</option>
+                                <option value="5">5 Star</option>
+                            </select>
 
                         </div>
 
                         <small class="text-danger">
-                            {{form.inputerror.doctorName}}
+                            {{form.inputerror.rating}}
                         </small>
 
                         <br>
 
-                        <!-- Admission Date -->
+                        <!-- Contact No -->
 
                         <label class="form-label">
-                            <i class="fas fa-calendar-check me-2"></i> Admission Date <span class="text-danger">*</span>
+                            <i class="fas fa-phone me-2"></i> Contact No <span class="text-danger">*</span>
                         </label>
 
                         <div class="input-group mb-2">
 
                             <span class="input-group-text">
-                                <i class="fas fa-calendar-check"></i>
+                                <i class="fas fa-phone"></i>
                             </span>
 
-                            <input type="date" class="form-control" name="admissionDate"
-                                [(ngModel)]="form.data.admissionDate">
+                            <input type="text" class="form-control" name="contactNo" [(ngModel)]="form.data.contactNo"
+                                placeholder="Enter Contact No">
 
                         </div>
 
-                        <small class="text-danger"> {{form.inputerror.admissionDate}} </small>
+                        <small class="text-danger"> {{form.inputerror.contactNo}} </small>
 
                         <hr class="my-4">
 
@@ -208,7 +214,7 @@
 
                             &nbsp;&nbsp;
 
-                            <button class="btn btn-primary btn-lg" (click)="forward('/patientlist')">
+                            <button class="btn btn-primary btn-lg" (click)="forward('/hotellist')">
                                 <i class="fas fa-list me-2"></i> List </button>
 
                         </div>
