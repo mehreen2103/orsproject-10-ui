@@ -35,4 +35,5 @@ export class EndpointServiceService {
   public BOOK = this.SERVER_URL + "/Book";
   public PATIENT = this.SERVER_URL + "/Patient";
   public HOTEL = this.SERVER_URL + "/Hotel";
+  public DOCTOR = this.SERVER_URL + "/Doctor";
 }

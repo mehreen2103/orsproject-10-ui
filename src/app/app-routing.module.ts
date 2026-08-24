@@ -62,6 +62,8 @@ import { PatientListComponent } from './patient/patient-list.component';
 import { PatientComponent } from './patient/patient.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { HotelListComponent } from './hotel/hotel-list.component';
+import { DoctorListComponent } from './doctor/doctor-list.component';
+import { DoctorComponent } from './doctor/doctor.component';
 
 
 
@@ -436,6 +438,18 @@ const routes: Routes = [
   {
     path: 'hotel/:id',
     component: HotelComponent
+  },
+   {
+    path: 'doctor',
+    component: DoctorComponent,
+  },
+  {
+    path: 'doctorlist',
+    component: DoctorListComponent,
+  },
+  {
+    path: 'doctor/:id',
+    component: DoctorComponent
   },
 
 
