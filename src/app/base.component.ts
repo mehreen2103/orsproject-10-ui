@@ -39,6 +39,7 @@ export class BaseCtl implements OnInit {
     }
 
     constructor(public endpoint: String, public serviceLocator: ServiceLocatorService, public route: ActivatedRoute) {
+
         var _self = this;
 
         _self.initApi(endpoint);
@@ -65,6 +66,7 @@ export class BaseCtl implements OnInit {
     }
 
     preload() {
+
         var _self = this;
 
         this.serviceLocator.httpService.get(_self.api.preload, function (res: any) {
@@ -81,6 +83,7 @@ export class BaseCtl implements OnInit {
     }
 
     display() {
+
         var _self = this;
 
         this.serviceLocator.httpService.get(_self.api.get + "/" + _self.form.data.id, function (res: any) {
@@ -95,17 +98,19 @@ export class BaseCtl implements OnInit {
             }
         });
     }
+
     fileToUpload: any = null;
 
     onFileSelect(event: any) {
 
         this.fileToUpload = event.target.files.item(0);
-        
+
         console.log('file', this.fileToUpload);
     }
 
 
     submit() {
+
         var _self = this;
 
         this.serviceLocator.httpService.post(this.api.save, this.form.data, function (res: any) {
@@ -115,7 +120,7 @@ export class BaseCtl implements OnInit {
 
             if (res.success) {
 
-                _self.form.error = false;  
+                _self.form.error = false;
                 _self.form.message = res.result.message;
 
                 // _self.form.data.id = res.result.data.id;
@@ -131,6 +136,7 @@ export class BaseCtl implements OnInit {
                 _self.form.message = res.result.message;
             }
             if (_self.fileToUpload != null) {
+
                 _self.uploadFile();
                 _self.display();
             }
@@ -139,7 +145,7 @@ export class BaseCtl implements OnInit {
     uploadFile() {
 
         let self = this;
-        
+
         const formData = new FormData();
 
         formData.append('file', this.fileToUpload);
@@ -147,7 +153,7 @@ export class BaseCtl implements OnInit {
         return this.serviceLocator.httpService.post("http://localhost:8080/User/profilePic/" + this.form.data.id, formData, function (res: any) {
 
             console.log("imageId = " + res.result.imageId);
-            
+
             self.form.data.imageId = res.result.imageId;
 
         });
@@ -188,6 +194,7 @@ export class BaseCtl implements OnInit {
                 _self.form.message = res.result.message;
                 _self.form.list = res.result.data;
                 _self.form.nextListSize = res.result.nextListSize;
+
             } else {
 
                 _self.form.error = true;
@@ -197,10 +204,12 @@ export class BaseCtl implements OnInit {
     }
 
     forward(page: any) {
+
         this.serviceLocator.forward(page);
     }
 
     reset() {
+
         location.reload();
     }
 }

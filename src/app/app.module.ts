@@ -77,6 +77,8 @@ import { HotelComponent } from './hotel/hotel.component';
 import { HotelListComponent } from './hotel/hotel-list.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorListComponent } from './doctor/doctor-list.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { VehicleListComponent } from './vehicle/vehicle-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -152,6 +154,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HotelListComponent,
     DoctorComponent,
     DoctorListComponent,
+    VehicleComponent,
+    VehicleListComponent,
   ],
   imports: [
     BrowserModule,

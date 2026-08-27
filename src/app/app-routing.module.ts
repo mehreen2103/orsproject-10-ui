@@ -64,6 +64,8 @@ import { HotelComponent } from './hotel/hotel.component';
 import { HotelListComponent } from './hotel/hotel-list.component';
 import { DoctorListComponent } from './doctor/doctor-list.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { VehicleListComponent } from './vehicle/vehicle-list.component';
 
 
 
@@ -325,7 +327,7 @@ const routes: Routes = [
   {
     path: 'atm',
     component: AtmComponent,
-    
+
   },
   {
     path: 'atmlist',
@@ -335,10 +337,10 @@ const routes: Routes = [
     path: 'atm/:id',
     component: AtmComponent
   },
-   {
+  {
     path: 'creditcard',
     component: CreditcardComponent,
-    
+
   },
   {
     path: 'creditcardlist',
@@ -349,10 +351,10 @@ const routes: Routes = [
     component: CreditcardComponent
   },
 
-   {
+  {
     path: 'vendor',
     component: VendorComponent,
-    
+
   },
   {
     path: 'vendorlist',
@@ -362,10 +364,10 @@ const routes: Routes = [
     path: 'vendor/:id',
     component: VendorComponent
   },
- {
+  {
     path: 'complaint',
     component: ComplaintComponent,
-    
+
   },
   {
     path: 'complaintlist',
@@ -376,7 +378,7 @@ const routes: Routes = [
     component: ComplaintComponent
   },
 
-   {
+  {
     path: 'library',
     component: LibraryComponent,
   },
@@ -388,7 +390,7 @@ const routes: Routes = [
     path: 'library/:id',
     component: LibraryComponent
   },
-   {
+  {
     path: 'payment',
     component: PaymentComponent,
   },
@@ -401,7 +403,7 @@ const routes: Routes = [
     component: PaymentComponent
   },
 
-   {
+  {
     path: 'book',
     component: BookComponent,
   },
@@ -413,8 +415,8 @@ const routes: Routes = [
     path: 'book/:id',
     component: BookComponent
   },
-  
-   {
+
+  {
     path: 'patient',
     component: PatientComponent,
   },
@@ -427,7 +429,7 @@ const routes: Routes = [
     component: PatientComponent
   },
 
-   {
+  {
     path: 'hotel',
     component: HotelComponent,
   },
@@ -439,7 +441,7 @@ const routes: Routes = [
     path: 'hotel/:id',
     component: HotelComponent
   },
-   {
+  {
     path: 'doctor',
     component: DoctorComponent,
   },
@@ -450,6 +452,19 @@ const routes: Routes = [
   {
     path: 'doctor/:id',
     component: DoctorComponent
+  },
+
+  {
+    path: 'vehicle',
+    component: VehicleComponent,
+  },
+  {
+    path: 'vehiclelist',
+    component: VehicleListComponent,
+  },
+  {
+    path: 'vehicle/:id',
+    component: VehicleComponent
   },
 
 
