@@ -28,6 +28,7 @@ export class HttpServiceService {
 
       callback(data);
     }, (error) => {
+      
       this.handleError(error, callback);
     });
   }
@@ -37,14 +38,14 @@ export class HttpServiceService {
     console.error('Request failed', error);
     if (error.status === 503) {
 
-    callback({
+      callback({
 
-    success: false,
-    result: {
+        success: false,
+        result: {
 
-      message: error.error?.result?.message
-    }
-  });
+          message: error.error?.result?.message
+        }
+      });
     }
   }
-  }
+}
