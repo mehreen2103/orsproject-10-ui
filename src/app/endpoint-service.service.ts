@@ -37,4 +37,5 @@ export class EndpointServiceService {
   public HOTEL = this.SERVER_URL + "/Hotel";
   public DOCTOR = this.SERVER_URL + "/Doctor";
   public VEHICLE = this.SERVER_URL + "/Vehicle";
+  public EMPLOYEE = this.SERVER_URL + "/Employee";
 }

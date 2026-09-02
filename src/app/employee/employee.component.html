@@ -1,0 +1,242 @@
+<style>
+    .employee-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .employee-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .employee-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .employee-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .employee-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="employee-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card employee-card">
+
+                    <div class="employee-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-user-plus me-2"></i> Add Employee
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-user-edit me-2"></i> Update Employee
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <!-- Employee Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-user me-2"></i> Employee Name <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="employeeName"
+                                [(ngModel)]="form.data.employeeName" placeholder="Enter Employee Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.employeeName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Department -->
+
+                        <label class="form-label">
+                            <i class="fas fa-building me-2"></i> Department <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-building"></i>
+                            </span>
+
+                            <select class="form-control" name="department" [(ngModel)]="form.data.department">
+                                <option value="undefined">------------Select Department-------------</option>
+                                <option value="HR">HR</option>
+                                <option value="Finance">Finance</option>
+                                <option value="IT">IT</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Operations">Operations</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.department}}
+                        </small>
+
+                        <br>
+
+                        <!-- Salary -->
+
+                        <label class="form-label">
+                            <i class="fas fa-rupee-sign me-2"></i> Salary <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-rupee-sign"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="salary" [(ngModel)]="form.data.salary"
+                                placeholder="Enter Salary">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.salary}}
+                        </small>
+
+                        <br>
+
+                        <!-- Email -->
+
+                        <label class="form-label">
+                            <i class="fas fa-envelope me-2"></i> Email <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" name="email" [(ngModel)]="form.data.email"
+                                placeholder="Enter Email">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.email}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i> Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/employeelist')">
+                                <i class="fas fa-list me-2"></i> List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<app-footer></app-footer>

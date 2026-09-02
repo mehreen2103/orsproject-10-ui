@@ -66,6 +66,8 @@ import { DoctorListComponent } from './doctor/doctor-list.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleListComponent } from './vehicle/vehicle-list.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeListComponent } from './employee/employee-list.component';
 
 
 
@@ -465,6 +467,19 @@ const routes: Routes = [
   {
     path: 'vehicle/:id',
     component: VehicleComponent
+  },
+
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+  },
+  {
+    path: 'employeelist',
+    component: EmployeeListComponent,
+  },
+  {
+    path: 'employee/:id',
+    component: EmployeeComponent
   },
 
 

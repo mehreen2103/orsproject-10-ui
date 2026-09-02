@@ -79,6 +79,8 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorListComponent } from './doctor/doctor-list.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleListComponent } from './vehicle/vehicle-list.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeListComponent } from './employee/employee-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -156,6 +158,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DoctorListComponent,
     VehicleComponent,
     VehicleListComponent,
+    EmployeeComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,
