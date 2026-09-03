@@ -1,0 +1,310 @@
+<style type="text/css">
+    .hm {
+        background-image: url('assets/files/list.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        padding-top: 85px;
+    }
+
+    .text {
+        text-align: center;
+    }
+
+    .table-responsive {
+        width: 85% !important;
+        margin: 20px auto !important;
+        overflow-x: auto;
+        background: rgba(255, 255, 255, .95);
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, .15);
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table th,
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table thead tr {
+        background: #8C8C8C;
+    }
+
+    .table thead th {
+        font-weight: bold;
+    }
+
+    .button-wrapper {
+        width: 85%;
+        margin: 20px auto;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="hm pb-5">
+
+    <ng-container *ngIf="form.list.length > 0">
+
+        <div align="center">
+            <h1 style="color:#2F4156;"><b>Bank List</b></h1>
+        </div>
+
+        <br>
+
+        <!-- Success Message -->
+
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div *ngIf="!form.error && form.message" class="col-md-4 alert alert-success alert-dismissible">
+
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+
+                <h4>
+                    <font color="#008000">{{form.message}}</font>
+                </h4>
+
+            </div>
+
+            <div class="col-md-4"></div>
+
+        </div>
+
+        <!-- Error Message -->
+
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div *ngIf="form.error && form.message" class="col-md-4 alert alert-danger alert-dismissible">
+
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+
+                <h4>
+                    <font color="red">{{form.message}}</font>
+                </h4>
+
+            </div>
+
+            <div class="col-md-4"></div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="row">
+
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-2">
+
+                <input type="text" name="bankName" [(ngModel)]="form.searchParams.bankName"
+                    placeholder="Enter Bank Name" class="form-control">
+
+            </div>
+
+            <div class="col-sm-2">
+
+                <input type="text" name="branchName" [(ngModel)]="form.searchParams.branchName"
+                    placeholder="Enter Branch Name" class="form-control">
+
+            </div>
+
+            <div class="col-sm-2">
+
+                <input type="text" name="ifscCode" [(ngModel)]="form.searchParams.ifscCode"
+                    placeholder="Enter IFSC Code" class="form-control">
+
+            </div>
+
+            <div class="col-sm-2">
+
+                <input type="text" name="city" [(ngModel)]="form.searchParams.city" placeholder="Enter City"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-sm-2">
+
+                <input type="submit" (click)="search()" class="btn btn-primary btn-md" style="font-size:15px"
+                    value="Search">
+
+                &nbsp;
+
+                <input type="submit" (click)="reset()" class="btn btn-dark btn-md" style="font-size:15px" value="Reset">
+
+            </div>
+
+            <div class="col-sm-1"></div>
+
+        </div>
+
+        <!-- Table -->
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            <input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
+                        </th>
+
+                        <th>S.NO</th>
+
+                        <th>Bank Name</th>
+
+                        <th>Branch Name</th>
+
+                        <th>IFSC Code</th>
+
+                        <th>City</th>
+
+                        <th>Edit</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let m of form.list; let i=index">
+
+                        <td>
+
+                            <input type="checkbox" #checkboxes (change)="checklistUpdate()" [id]="m.id"
+                                [value]="isMasterSel">
+
+                        </td>
+
+                        <td>{{(form.pageNo * 5)+i+1}}</td>
+
+                        <td>{{m.bankName}}</td>
+
+                        <td>{{m.branchName}}</td>
+
+                        <td>{{m.ifscCode}}</td>
+
+                        <td>{{m.city}}</td>
+
+                        <td>
+
+                            <a (click)="forward('/bank/'+m.id)" style="cursor:pointer;">
+                                Edit
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="button-wrapper">
+
+            <table width="100%">
+
+                <tr>
+
+                    <td>
+
+                        <input type="submit" (click)="previous()" class="btn btn-warning btn-md" style="font-size:17px"
+                            value="Previous" [disabled]="form.pageNo == 0">
+
+                    </td>
+
+                    <td align="center">
+
+                        <input type="submit" (click)="forward('/bank')" class="btn btn-primary btn-md"
+                            style="font-size:17px" value="New">
+
+                    </td>
+
+                    <td align="center">
+
+                        <input type="submit" (click)="deleteMany()" class="btn btn-danger btn-md" style="font-size:17px"
+                            value="Delete">
+
+                    </td>
+
+                    <td align="right">
+
+                        <input type="submit" (click)="next()" class="btn btn-warning btn-md" style="font-size:17px"
+                            value="Next" [disabled]="form.nextListSize == 0">
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </ng-container>
+
+    <!-- No Data -->
+
+    <ng-container *ngIf="form.list.length == 0">
+
+        <div align="center">
+
+            <h1 style="font-size:40px;color:#162390;">Bank List</h1>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div *ngIf="form.error && form.message" class="col-md-4 alert alert-danger alert-dismissible">
+
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+
+                <h4>
+
+                    <font color="red">{{form.message}}</font>
+
+                </h4>
+
+            </div>
+
+            <div class="col-md-4"></div>
+
+        </div>
+
+        <br>
+
+        <div style="padding-left:48%;">
+
+            <input type="submit" (click)="forward('/bank')" class="btn btn-primary btn-md" style="font-size:17px"
+                value="Back">
+
+        </div>
+
+    </ng-container>
+
+</div>
+
+<app-footer></app-footer>

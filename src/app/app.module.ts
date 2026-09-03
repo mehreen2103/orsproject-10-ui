@@ -81,6 +81,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleListComponent } from './vehicle/vehicle-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
+import { BankComponent } from './bank/bank.component';
+import { BankListComponent } from './bank/bank-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -160,6 +162,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     VehicleListComponent,
     EmployeeComponent,
     EmployeeListComponent,
+    BankComponent,
+    BankListComponent,
   ],
   imports: [
     BrowserModule,

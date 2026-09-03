@@ -68,6 +68,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleListComponent } from './vehicle/vehicle-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
+import { BankListComponent } from './bank/bank-list.component';
+import { BankComponent } from './bank/bank.component';
 
 
 
@@ -480,6 +482,19 @@ const routes: Routes = [
   {
     path: 'employee/:id',
     component: EmployeeComponent
+  },
+
+   {
+    path: 'bank',
+    component: BankComponent,
+  },
+  {
+    path: 'banklist',
+    component: BankListComponent,
+  },
+  {
+    path: 'bank/:id',
+    component: BankComponent
   },
 
 

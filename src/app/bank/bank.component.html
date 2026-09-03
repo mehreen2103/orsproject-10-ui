@@ -1,0 +1,234 @@
+<style>
+    .bank-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .bank-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .bank-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .bank-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .bank-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="bank-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card bank-card">
+
+                    <div class="bank-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-university me-2"></i> Add Bank
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-university me-2"></i> Update Bank
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <!-- Bank Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-university me-2"></i> Bank Name <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-university"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="bankName" [(ngModel)]="form.data.bankName"
+                                placeholder="Enter Bank Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.bankName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Branch Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-code-branch me-2"></i> Branch Name <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-code-branch"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="branchName" [(ngModel)]="form.data.branchName"
+                                placeholder="Enter Branch Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.branchName}}
+                        </small>
+
+                        <br>
+
+                        <!-- IFSC Code -->
+
+                        <label class="form-label">
+                            <i class="fas fa-barcode me-2"></i> IFSC Code <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-barcode"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="ifscCode" [(ngModel)]="form.data.ifscCode"
+                                placeholder="Enter IFSC Code">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.ifscCode}}
+                        </small>
+
+                        <br>
+
+                        <!-- City -->
+
+                        <label class="form-label">
+                            <i class="fas fa-city me-2"></i> City <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-city"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="city" [(ngModel)]="form.data.city"
+                                placeholder="Enter City">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.city}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i> Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/banklist')">
+                                <i class="fas fa-list me-2"></i> List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<app-footer></app-footer>
