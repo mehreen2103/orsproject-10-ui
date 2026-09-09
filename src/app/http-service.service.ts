@@ -42,7 +42,6 @@ export class HttpServiceService {
 
         success: false,
         result: {
-
           message: error.error?.result?.message
         }
       });

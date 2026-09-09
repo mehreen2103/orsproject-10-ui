@@ -83,6 +83,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { BankComponent } from './bank/bank.component';
 import { BankListComponent } from './bank/bank-list.component';
+import { MovieComponent } from './movie/movie.component';
+import { MovieListComponent } from './movie/movie-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -164,6 +166,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EmployeeListComponent,
     BankComponent,
     BankListComponent,
+    MovieComponent,
+    MovieListComponent,
   ],
   imports: [
     BrowserModule,
@@ -187,7 +191,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpServiceService,
     EndpointServiceService,
     ServiceLocatorService,
-    AuthenticatorResponse
+    AuthenticatorResponse,
+
   ],
   bootstrap: [AppComponent]
 })

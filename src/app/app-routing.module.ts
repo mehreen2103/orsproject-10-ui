@@ -70,6 +70,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { BankListComponent } from './bank/bank-list.component';
 import { BankComponent } from './bank/bank.component';
+import { MovieComponent } from './movie/movie.component';
+import { MovieListComponent } from './movie/movie-list.component';
 
 
 
@@ -495,6 +497,19 @@ const routes: Routes = [
   {
     path: 'bank/:id',
     component: BankComponent
+  },
+
+   {
+    path: 'movie',
+    component: MovieComponent,
+  },
+  {
+    path: 'movielist',
+    component: MovieListComponent,
+  },
+  {
+    path: 'movie/:id',
+    component: MovieComponent
   },
 
 
