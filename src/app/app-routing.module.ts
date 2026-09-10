@@ -72,6 +72,8 @@ import { BankListComponent } from './bank/bank-list.component';
 import { BankComponent } from './bank/bank.component';
 import { MovieComponent } from './movie/movie.component';
 import { MovieListComponent } from './movie/movie-list.component';
+import { LaptopListComponent } from './laptop/laptop-list.component';
+import { LaptopComponent } from './laptop/laptop.component';
 
 
 
@@ -510,6 +512,18 @@ const routes: Routes = [
   {
     path: 'movie/:id',
     component: MovieComponent
+  },
+   {
+    path: 'laptop',
+    component: LaptopComponent,
+  },
+  {
+    path: 'laptoplist',
+    component: LaptopListComponent,
+  },
+  {
+    path: 'laptop/:id',
+    component: LaptopComponent
   },
 
 

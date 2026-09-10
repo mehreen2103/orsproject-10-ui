@@ -85,6 +85,8 @@ import { BankComponent } from './bank/bank.component';
 import { BankListComponent } from './bank/bank-list.component';
 import { MovieComponent } from './movie/movie.component';
 import { MovieListComponent } from './movie/movie-list.component';
+import { LaptopComponent } from './laptop/laptop.component';
+import { LaptopListComponent } from './laptop/laptop-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -168,6 +170,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BankListComponent,
     MovieComponent,
     MovieListComponent,
+    LaptopComponent,
+    LaptopListComponent,
   ],
   imports: [
     BrowserModule,

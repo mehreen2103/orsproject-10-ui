@@ -40,4 +40,5 @@ export class EndpointServiceService {
   public EMPLOYEE = this.SERVER_URL + "/Employee";
   public BANK = this.SERVER_URL + "/Bank";
   public MOVIE = this.SERVER_URL + "/Movie";
+  public LAPTOP = this.SERVER_URL + "/Laptop";
 }

@@ -1,0 +1,237 @@
+<style>
+    .laptop-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .laptop-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .laptop-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .laptop-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .laptop-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="laptop-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card laptop-card">
+
+                    <div class="laptop-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-laptop me-2"></i> Add Laptop
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-laptop me-2"></i> Update Laptop
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <!-- Brand Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-laptop me-2"></i> Brand Name
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-laptop"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="brandName" [(ngModel)]="form.data.brandName"
+                                placeholder="Enter Brand Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.brandName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Processor -->
+
+                        <label class="form-label">
+                            <i class="fas fa-microchip me-2"></i> Processor
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-microchip"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="processor" [(ngModel)]="form.data.processor"
+                                placeholder="Enter Processor">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.processor}}
+                        </small>
+
+                        <br>
+
+                        <!-- RAM -->
+
+                        <label class="form-label">
+                            <i class="fas fa-memory me-2"></i> RAM
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-memory"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="ram" [(ngModel)]="form.data.ram"
+                                placeholder="Enter RAM">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.ram}}
+                        </small>
+
+                        <br>
+                        <!-- Price -->
+
+                        <label class="form-label">
+                            <i class="fas fa-tag me-2"></i> Price
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-tag"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="price" [(ngModel)]="form.data.price"
+                                placeholder="Enter Price">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.price}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i> Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/laptoplist')">
+                                <i class="fas fa-list me-2"></i> List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<app-footer></app-footer>
