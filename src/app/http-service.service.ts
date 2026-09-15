@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class HttpServiceService {
 
   constructor(private httpClient: HttpClient, private router: Router) {
-
+ 
   }
 
   post(endpoint: any, bean: any, callback: any) {

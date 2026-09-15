@@ -87,6 +87,8 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieListComponent } from './movie/movie-list.component';
 import { LaptopComponent } from './laptop/laptop.component';
 import { LaptopListComponent } from './laptop/laptop-list.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { RestaurantListComponent } from './restaurant/restaurant-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -172,6 +174,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MovieListComponent,
     LaptopComponent,
     LaptopListComponent,
+    RestaurantComponent,
+    RestaurantListComponent,
   ],
   imports: [
     BrowserModule,

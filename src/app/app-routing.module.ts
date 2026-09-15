@@ -74,6 +74,8 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieListComponent } from './movie/movie-list.component';
 import { LaptopListComponent } from './laptop/laptop-list.component';
 import { LaptopComponent } from './laptop/laptop.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { RestaurantListComponent } from './restaurant/restaurant-list.component';
 
 
 
@@ -488,7 +490,7 @@ const routes: Routes = [
     component: EmployeeComponent
   },
 
-   {
+  {
     path: 'bank',
     component: BankComponent,
   },
@@ -501,7 +503,7 @@ const routes: Routes = [
     component: BankComponent
   },
 
-   {
+  {
     path: 'movie',
     component: MovieComponent,
   },
@@ -513,7 +515,7 @@ const routes: Routes = [
     path: 'movie/:id',
     component: MovieComponent
   },
-   {
+  {
     path: 'laptop',
     component: LaptopComponent,
   },
@@ -524,6 +526,18 @@ const routes: Routes = [
   {
     path: 'laptop/:id',
     component: LaptopComponent
+  },
+  {
+    path: 'restaurant',
+    component: RestaurantComponent,
+  },
+  {
+    path: 'restaurantlist',
+    component: RestaurantListComponent,
+  },
+  {
+    path: 'restaurant/:id',
+    component: RestaurantComponent
   },
 
 
