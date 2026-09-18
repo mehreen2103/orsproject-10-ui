@@ -1,0 +1,238 @@
+<style>
+    .gym-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .gym-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .gym-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .gym-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .gym-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="gym-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card gym-card">
+
+                    <div class="gym-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-dumbbell me-2"></i> Add Gym
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-dumbbell me-2"></i> Update Gym
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <!-- Gym Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-dumbbell me-2"></i> Gym Name
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-dumbbell"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="gymName" [(ngModel)]="form.data.gymName"
+                                placeholder="Enter Gym Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.gymName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Trainer Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-user-tie me-2"></i> Trainer Name
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-user-tie"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="trainerName"
+                                [(ngModel)]="form.data.trainerName" placeholder="Enter Trainer Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.trainerName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Membership Fee -->
+
+                        <label class="form-label">
+                            <i class="fas fa-money-bill-wave me-2"></i> Membership Fee
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="membershipFee"
+                                [(ngModel)]="form.data.membershipFee" placeholder="Enter Membership Fee">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.membershipFee}}
+                        </small>
+
+                        <br>
+
+                        <!-- Location -->
+
+                        <label class="form-label">
+                            <i class="fas fa-map-marker-alt me-2"></i> Location
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="location" [(ngModel)]="form.data.location"
+                                placeholder="Enter Location">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.location}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i> Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/gymlist')">
+                                <i class="fas fa-list me-2"></i> List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<app-footer></app-footer>

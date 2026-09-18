@@ -37,6 +37,7 @@ export class AuthService implements HttpInterceptor {
         
         if (error.status === 401) {
           localStorage.clear();
+          
           this.router.navigate(['/login'], {
             queryParams: { errorMessage: error.error },
           });

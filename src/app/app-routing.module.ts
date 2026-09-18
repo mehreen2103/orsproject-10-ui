@@ -76,6 +76,8 @@ import { LaptopListComponent } from './laptop/laptop-list.component';
 import { LaptopComponent } from './laptop/laptop.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantListComponent } from './restaurant/restaurant-list.component';
+import { GymListComponent } from './gym/gym-list.component';
+import { GymComponent } from './gym/gym.component';
 
 
 
@@ -539,6 +541,19 @@ const routes: Routes = [
     path: 'restaurant/:id',
     component: RestaurantComponent
   },
+{
+    path: 'gym',
+    component: GymComponent,
+  },
+  {
+    path: 'gymlist',
+    component: GymListComponent,
+  },
+  {
+    path: 'gym/:id',
+    component: GymComponent
+  },
+  
 
 
 ];
