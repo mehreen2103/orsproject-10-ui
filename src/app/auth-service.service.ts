@@ -28,16 +28,16 @@ export class AuthService implements HttpInterceptor {
         },
       });
     }
-  
+
     console.log(req.headers.get("Authorization"))
 
     return next.handle(req).pipe(
 
       catchError((error: HttpErrorResponse) => {
-        
+
         if (error.status === 401) {
           localStorage.clear();
-          
+
           this.router.navigate(['/login'], {
             queryParams: { errorMessage: error.error },
           });

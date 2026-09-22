@@ -78,6 +78,8 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantListComponent } from './restaurant/restaurant-list.component';
 import { GymListComponent } from './gym/gym-list.component';
 import { GymComponent } from './gym/gym.component';
+import { BusListComponent } from './bus/bus-list.component';
+import { BusComponent } from './bus/bus.component';
 
 
 
@@ -553,9 +555,18 @@ const routes: Routes = [
     path: 'gym/:id',
     component: GymComponent
   },
-  
-
-
+  {
+    path: 'bus',
+    component: BusComponent,
+  },
+  {
+    path: 'buslist',
+    component: BusListComponent,
+  },
+  {
+    path: 'bus/:id',
+    component: BusComponent
+  },
 ];
 
 @NgModule({

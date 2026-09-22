@@ -1,0 +1,247 @@
+<style>
+    .bus-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #edf4f7, #f8fbfc);
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .bus-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        transition: .3s;
+    }
+
+    .bus-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .bus-header {
+        background: linear-gradient(90deg, #233945, #2f4d5a);
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .bus-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .input-group-text {
+        background: #233945;
+        color: white;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control:focus {
+        border-color: #233945;
+        box-shadow: 0 0 0 .2rem rgba(35, 57, 69, .15);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #233945;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        min-width: 130px;
+    }
+
+    .btn-success {
+        background: #198754;
+    }
+
+    .btn-primary {
+        background: #233945;
+        border-color: #233945;
+    }
+
+    .btn-primary:hover {
+        background: #2f4d5a;
+    }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="bus-bg">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="card bus-card">
+
+                    <div class="bus-header">
+
+                        <h2 *ngIf="!form.data.id">
+                            <i class="fas fa-bus me-2"></i> Add Bus
+                        </h2>
+
+                        <h2 *ngIf="form.data.id > 0">
+                            <i class="fas fa-bus me-2"></i> Update Bus
+                        </h2>
+
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div *ngIf="!form.error && form.message" class="alert alert-success text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <div *ngIf="form.error && form.message" class="alert alert-danger text-center">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{form.message}}
+                        </div>
+
+                        <!-- Bus Number -->
+
+                        <label class="form-label">
+                            <i class="fas fa-bus me-2"></i> Bus Number
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-bus"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="busNumber" [(ngModel)]="form.data.busNumber"
+                                placeholder="Enter Bus Number">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.busNumber}}
+                        </small>
+
+                        <br>
+
+                        <!-- Driver Name -->
+
+                        <label class="form-label">
+                            <i class="fas fa-user me-2"></i> Driver Name
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="driverName" [(ngModel)]="form.data.driverName"
+                                placeholder="Enter Driver Name">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.driverName}}
+                        </small>
+
+                        <br>
+
+                        <!-- Route -->
+
+                        <label class="form-label">
+                            <i class="fas fa-route me-2"></i> Route
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-route"></i>
+                            </span>
+
+                            <select class="form-control" name="route" [(ngModel)]="form.data.route">
+
+                                <option value="undefined">------------Select Route------------</option>
+                                <option value="Indore - Bhopal">Indore - Bhopal</option>
+                                <option value="Indore - Ujjain">Indore - Ujjain</option>
+                                <option value="Indore - Dewas">Indore - Dewas</option>
+                                <option value="Indore - Pithampur">Indore - Pithampur</option>
+                                <option value="Indore - Mhow">Indore - Mhow</option>
+                                <option value="Bhopal - Gwalior">Bhopal - Gwalior</option>
+                                <option value="Ujjain - Ratlam">Ujjain - Ratlam</option>
+                                <option value="Dewas - Sehore">Dewas - Sehore</option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.route}}
+                        </small>
+
+                        <!-- Capacity -->
+
+                        <label class="form-label">
+                            <i class="fas fa-users me-2"></i> Capacity
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="input-group mb-2">
+
+                            <span class="input-group-text">
+                                <i class="fas fa-users"></i>
+                            </span>
+
+                            <input type="text" class="form-control" name="capacity" [(ngModel)]="form.data.capacity"
+                                placeholder="Enter Capacity">
+
+                        </div>
+
+                        <small class="text-danger">
+                            {{form.inputerror.capacity}}
+                        </small>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success btn-lg me-3" (click)="submit()">
+                                <i class="fas fa-save me-2"></i> Save
+                            </button>
+
+                            &nbsp;&nbsp;
+
+                            <button class="btn btn-primary btn-lg" (click)="forward('/buslist')">
+                                <i class="fas fa-list me-2"></i> List
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<app-footer></app-footer>

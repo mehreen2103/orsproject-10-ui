@@ -8,6 +8,7 @@ export class EndpointServiceService {
   constructor() { }
 
   public SERVER_URL = "http://localhost:8080";
+  
   public USER = this.SERVER_URL + "/User";
   public ROLE = this.SERVER_URL + "/Role";
   public COLLEGE = this.SERVER_URL + "/College";
@@ -43,4 +44,5 @@ export class EndpointServiceService {
   public LAPTOP = this.SERVER_URL + "/Laptop";
   public RESTAURANT = this.SERVER_URL + "/Restaurant";
   public GYM = this.SERVER_URL + "/Gym";
+  public BUS = this.SERVER_URL + "/Bus";
 }
